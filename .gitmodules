@@ -1,12 +1,3 @@
-[submodule "bundles/protodef"]
-	path = bundles/protodef
-	url = https://github.com/derekwyatt/vim-protodef
 [submodule "pathogen"]
 	path = pathogen
 	url = https://github.com/tpope/vim-pathogen
-[submodule "bundles/nerdtree"]
-	path = bundles/nerdtree
-	url = https://github.com/scrooloose/nerdtree
-[submodule "bundles/xptemplate"]
-	path = bundles/xptemplate
-	url = https://github.com/drmingdrmer/xptemplate.git
