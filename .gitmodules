@@ -1,0 +1,6 @@
+[submodule "pathogen"]
+	path = pathogen
+	url = https://github.com/tpope/vim-pathogen
+[submodule "bundles/protodef"]
+	path = bundles/protodef
+	url = https://github.com/derekwyatt/vim-protodef
