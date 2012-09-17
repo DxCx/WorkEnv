@@ -1,11 +1,14 @@
 MyVimRc
 =======
-
 my vim configurations and plugins
 
 You should checkout the folder wherever you like:
 Windows :
 ----------
+using TortoiseGit just Clone the repo
+then don't forget to do:
+
+Right Click > TortoiseGit > Submodule Update
 
 Linux :
 ----------
@@ -14,6 +17,6 @@ git submodule init
 git submodule update
 
 After the repository is created don't forget to
-add inside the original .vimrc:
+source the vimrc inside the original .vimrc:
 
 source X:\vim_config\vimrc.vim
