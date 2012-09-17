@@ -1,8 +1,8 @@
 " first set runtimepath to this directory.
-let &runtimepath.=','.escape(expand('%:p:h'), '\,')
+let &runtimepath.=','.escape(expand('<sfile>:p:h'), '\,')
 
 " Setup Pathogen
-source pathogen\autoload\pathogen.vim
+runtime pathogen\autoload\pathogen.vim
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
