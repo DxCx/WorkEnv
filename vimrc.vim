@@ -1,4 +1,4 @@
-" User FWSlash and now backslash
+" Use FWSlash instead of backslash
 set shellslash
 
 " first set runtimepath to this directory.
