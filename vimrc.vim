@@ -76,5 +76,39 @@ let mapleader=","
 " Python spcific settings
 autocmd filetype python set expandtab   " Use spaces and not real tabs
 
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction
+
+function! GrepCursor() 
+	execute "normal! viw"
+	call VisualSelection("vimgrep")
+endfunction
+
+function! VisualSelection(direction) range
+	let l:saved_reg = @"
+	execute "normal! vgvy"
+
+	let l:pattern = escape(@", '\\/.*$^~[]')
+	let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+	if a:direction == 'b'
+		execute "normal ?" . l:pattern . "^M"
+	elseif a:direction == 'vimgrep'
+		call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.[ch]')
+	elseif a:direction == 'replace'
+		call CmdLine("%s" . '/'. l:pattern . '/')
+	elseif a:direction == 'f'
+		execute "normal /" . l:pattern . "^M"
+	endif
+
+	let @/ = l:pattern
+	let @" = l:saved_reg
+endfunction
+
 " custom Bindings
 map <F2> :NERDTreeToggle<CR>
+vmap <leader>g :call VisualSelection('vimgrep')<CR>
+nmap <leader>g :call GrepCursor()<CR>
