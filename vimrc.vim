@@ -1,8 +1,11 @@
+" User FWSlash and now backslash
+set shellslash
+
 " first set runtimepath to this directory.
 let &runtimepath.=','.escape(expand('<sfile>:p:h'), '\,')
 
 " Setup Pathogen
-runtime pathogen\autoload\pathogen.vim
+runtime pathogen/autoload/pathogen.vim
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
@@ -38,10 +41,6 @@ set nu
 set wrapscan
 set ignorecase
 set smartcase
-
-" User FWSlash and now backslash
-set shellslash
-
 
 " add $ at the end of replace instead of just delete it.
 set cpoptions=ces$
