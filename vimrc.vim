@@ -6,6 +6,10 @@ runtime pathogen\autoload\pathogen.vim
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" set filetype stuff on
+filetype on
+filetype plugin on
+
 " Color Scheme Desert (Changed BG to black)
 colorscheme dxcx_desert
 
@@ -14,12 +18,17 @@ colorscheme dxcx_desert
 set nocompatible
 set hidden
 
-" Tab/Shift stop
+" Ident settings
+filetype indent on
 set tabstop=4
 set shiftwidth=4
+set autoindent  " always auto indent
+set copyindent  " copy indent from privius line
+set smarttab    " insert tabs according to shiftwidth
 
-" No ~ Files.
+" No ~ or swap files.
 set nobackup
+set noswapfile
 
 " Show Line numbers
 set nu
@@ -33,10 +42,6 @@ set smartcase
 " User FWSlash and now backslash
 set shellslash
 
-" set filetype stuff on
-filetype on
-filetype plugin on
-filetype indent on
 
 " add $ at the end of replace instead of just delete it.
 set cpoptions=ces$
@@ -50,3 +55,26 @@ set cpoptions=ces$
 " i = includes
 " tag complition
 set complete=.,w,b,k,d,i,t
+
+" Cool complete menu
+set wildmenu
+
+" Search options (search as you type + highlight)
+set hlsearch
+set incsearch
+
+" I Want vim to remember as much as he can
+set history=1000
+set undolevels=1000
+
+" don't autocomplete to match those file types 
+set wildignore=*.swp,*.bak,*.pyc,*.class
+
+" I Want leader key to be , and not \
+let mapleader=","
+
+" Python spcific settings
+autocmd filetype python set expandtab   " Use spaces and not real tabs
+
+" custom Bindings
+map <F2> :NERDTreeToggle<CR>

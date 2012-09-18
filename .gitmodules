@@ -10,3 +10,12 @@
 [submodule "bundle/xptemplate"]
 	path = bundle/xptemplate
 	url = https://github.com/drmingdrmer/xptemplate.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "bundle/matchit"]
+	path = bundle/matchit
+	url = https://github.com/tsaleh/vim-matchit.git
+[submodule "bundle/open_file_under_cursor"]
+	path = bundle/open_file_under_cursor
+	url = https://github.com/amix/open_file_under_cursor.vim.git
