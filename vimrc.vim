@@ -75,6 +75,12 @@ let mapleader=","
 " Python spcific settings
 autocmd filetype python set expandtab   " Use spaces and not real tabs
 
+function! CmdRun(str)
+    exe a:str
+endfunction
+
+let my_grep_base="."
+
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
@@ -82,7 +88,7 @@ function! CmdLine(str)
 endfunction
 
 function! GrepCursor() 
-	execute "normal! viw"
+	exe "normal! viw"
 	call VisualSelection("vimgrep")
 endfunction
 
@@ -96,7 +102,10 @@ function! VisualSelection(direction) range
 	if a:direction == 'b'
 		execute "normal ?" . l:pattern . "^M"
 	elseif a:direction == 'vimgrep'
-		call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.[ch]')
+		" call CmdLine("vimgrep " . '/'. l:pattern . '/ ' . g:my_grep_base . '/**/*.[ch]')
+		call CmdRun("vimgrep " . '/'. l:pattern . '/ ' . g:my_grep_base . '/**/*.[ch]')
+		exe "ccl" 
+		exe "cwindow"
 	elseif a:direction == 'replace'
 		call CmdLine("%s" . '/'. l:pattern . '/')
 	elseif a:direction == 'f'
@@ -108,6 +117,6 @@ function! VisualSelection(direction) range
 endfunction
 
 " custom Bindings
-map <F2> :NERDTreeToggle<CR>
-vmap <leader>g :call VisualSelection('vimgrep')<CR>
-nmap <leader>g :call GrepCursor()<CR>
+map  <silent> <F2> :NERDTreeToggle<CR>
+vmap <silent> <leader>g :call VisualSelection('vimgrep')<CR>
+nmap <silent> <leader>g :call GrepCursor()<CR>
