@@ -38,6 +38,9 @@ set nu
 
 " set the search scan to wrap lines
 " and ignore case, but recognize upper case
+set wrap
+set linebreak
+set nolist
 set wrapscan
 set ignorecase
 set smartcase
@@ -71,6 +74,9 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 
 " I Want leader key to be , and not \
 let mapleader=","
+
+" Set region to English
+set spelllang=en_us
 
 " Python spcific settings
 autocmd filetype python set expandtab   " Use spaces and not real tabs
@@ -120,3 +126,4 @@ endfunction
 map  <silent> <F2> :NERDTreeToggle<CR>
 vmap <silent> <leader>g :call VisualSelection('vimgrep')<CR>
 nmap <silent> <leader>g :call GrepCursor()<CR>
+nmap <silent> <leader>s :set spell!<CR>
