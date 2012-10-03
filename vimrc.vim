@@ -4,6 +4,12 @@ set shellslash
 " first set runtimepath to this directory.
 let &runtimepath.=','.escape(expand('<sfile>:p:h'), '\,')
 
+" My ctags settings
+let ctags_on="no"
+let ctags_exe=expand('<sfile>:p:h')."\/ctags.exe"
+let ctags_file="tags"
+let ctags_options="--c++-kinds=+p --fields=+iaS --extra=+q --extra=+f"
+
 " Setup Pathogen
 runtime pathogen/autoload/pathogen.vim
 call pathogen#runtime_append_all_bundles()
@@ -122,8 +128,23 @@ function! VisualSelection(direction) range
 	let @" = l:saved_reg
 endfunction
 
+function! UpdateCTags()
+	if g:ctags_on == "yes"
+		let l:opts = g:ctags_options." -f ".g:ctags_file
+		if filereadable(g:ctags_file)
+			execute "silent! !".g:ctags_exe." ".l:opts."\"".expand("%:p")."\""
+		else
+			" Create new file
+			execute "silent! !".g:ctags_exe." ".l:opts." -R * &"
+		endif
+	endif
+endfunction
+
 " custom Bindings
 map  <silent> <F2> :NERDTreeToggle<CR>
 vmap <silent> <leader>g :call VisualSelection('vimgrep')<CR>
 nmap <silent> <leader>g :call GrepCursor()<CR>
 nmap <silent> <leader>s :set spell!<CR>
+
+" Auto create ctags with AU
+au BufWritePost *.c, *.cpp, *.h :call UpdateCTags()
