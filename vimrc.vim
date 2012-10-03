@@ -147,4 +147,4 @@ nmap <silent> <leader>g :call GrepCursor()<CR>
 nmap <silent> <leader>s :set spell!<CR>
 
 " Auto create ctags with AU
-au BufWritePost *.c, *.cpp, *.h :call UpdateCTags()
+au BufWritePost *.c,*.cpp,*.h :call UpdateCTags()
