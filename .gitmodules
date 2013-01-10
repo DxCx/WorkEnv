@@ -37,3 +37,6 @@
 [submodule "bundle/gundo"]
 	path = bundle/gundo
 	url = https://github.com/sjl/gundo.vim
+[submodule "bundle/html5-syntax"]
+	path = bundle/html5-syntax
+	url = https://github.com/othree/html5-syntax.vim
