@@ -40,3 +40,6 @@
 [submodule "bundle/html5-syntax"]
 	path = bundle/html5-syntax
 	url = https://github.com/othree/html5-syntax.vim
+[submodule "bundle/DirDiff"]
+	path = bundle/DirDiff
+	url = git://github.com/vim-scripts/DirDiff.vim.git
