@@ -148,3 +148,6 @@ nmap <silent> <leader>s :set spell!<CR>
 
 " Auto create ctags with AU
 au BufWritePost *.c,*.cpp,*.h :call UpdateCTags()
+
+" Enable syntax highlight
+syntax on
