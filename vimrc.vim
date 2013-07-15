@@ -146,6 +146,11 @@ vmap <silent> <leader>g :call VisualSelection('vimgrep')<CR>
 nmap <silent> <leader>g :call GrepCursor()<CR>
 nmap <silent> <leader>s :set spell!<CR>
 
+" Switch to alternate file
+nmap <silent> <F5> :make<CR>
+nmap <silent> <C-l> :bnext<CR>
+nmap <silent> <C-h> :bprevious<CR>
+
 " Auto create ctags with AU
 au BufWritePost *.c,*.cpp,*.h :call UpdateCTags()
 
