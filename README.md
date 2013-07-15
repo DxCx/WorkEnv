@@ -18,7 +18,7 @@ source the vimrc inside the original .vimrc:
 Linux :
 ----------
 
-	sudo apt-get install zsh git-core build-essential vim-gtk
+	sudo apt-get install zsh git-core build-essential vim-gtk curl
 	curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | bash
 
 	cd ~
