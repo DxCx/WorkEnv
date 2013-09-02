@@ -156,3 +156,15 @@ au BufWritePost *.c,*.cpp,*.h :call UpdateCTags()
 
 " Enable syntax highlight
 syntax on
+
+" Python & Html Autocomplete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+" Setup syntax checker
+"let g:syntastic_python_checkers=['pylint', 'pep8']
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1

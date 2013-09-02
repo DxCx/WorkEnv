@@ -15,10 +15,18 @@ source the vimrc inside the original .vimrc:
 
     source X:\vim_config\vimrc.vim
 
+Ubuntu :
+----------
+
+	sudo apt-get install zsh git-core build-essential vim-gtk curl pip
+
+Arch :
+----------
+	sudo pacman -S yaourt zsh pep8-python2 python2-pylint ipython2 gvim curl pip2 base-devel git
+
 Linux :
 ----------
 
-	sudo apt-get install zsh git-core build-essential vim-gtk curl
 	curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | bash
 
 	cd ~
