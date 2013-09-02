@@ -4,12 +4,6 @@ set shellslash
 " first set runtimepath to this directory.
 let &runtimepath.=','.escape(expand('<sfile>:p:h'), '\,')
 
-" My ctags settings
-let ctags_on="no"
-let ctags_exe=expand('<sfile>:p:h')."\/ctags.exe"
-let ctags_file="tags"
-let ctags_options="--c++-kinds=+p --fields=+iaS --extra=+q --extra=+f"
-
 " Setup Pathogen
 runtime pathogen/autoload/pathogen.vim
 call pathogen#runtime_append_all_bundles()
@@ -128,18 +122,6 @@ function! VisualSelection(direction) range
 	let @" = l:saved_reg
 endfunction
 
-function! UpdateCTags()
-	if g:ctags_on == "yes"
-		let l:opts = g:ctags_options." -f ".g:ctags_file
-		if filereadable(g:ctags_file)
-			execute "silent! !".g:ctags_exe." ".l:opts."\"".expand("%:p")."\""
-		else
-			" Create new file
-			execute "silent! !".g:ctags_exe." ".l:opts." -R * &"
-		endif
-	endif
-endfunction
-
 " custom Bindings
 map  <silent> <F2> :NERDTreeToggle<CR>
 vmap <silent> <leader>g :call VisualSelection('vimgrep')<CR>
@@ -151,20 +133,16 @@ nmap <silent> <F5> :make<CR>
 nmap <silent> <C-l> :bnext<CR>
 nmap <silent> <C-h> :bprevious<CR>
 
-" Auto create ctags with AU
-au BufWritePost *.c,*.cpp,*.h :call UpdateCTags()
-
 " Enable syntax highlight
 syntax on
 
-" Python & Html Autocomplete
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
 " Setup syntax checker
-"let g:syntastic_python_checkers=['pylint', 'pep8']
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
+
+" Completion
+autocmd FileType python setlocal completeopt-=preview
+let g:jedi#completions_command = "<C-p>"
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_on_dot = 0

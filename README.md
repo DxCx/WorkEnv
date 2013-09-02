@@ -19,10 +19,12 @@ Ubuntu :
 ----------
 
 	sudo apt-get install zsh git-core build-essential vim-gtk curl pip
+	sudo pip install jedi
 
 Arch :
 ----------
 	sudo pacman -S yaourt zsh pep8-python2 python2-pylint ipython2 gvim curl pip2 base-devel git
+	sudo pip2 install jedi
 
 Linux :
 ----------
