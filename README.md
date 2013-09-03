@@ -18,12 +18,12 @@ source the vimrc inside the original .vimrc:
 Ubuntu :
 ----------
 
-	sudo apt-get install zsh git-core build-essential vim-gtk curl pip
+	sudo apt-get install zsh git-core build-essential vim-gtk curl pip ack
 	sudo pip install jedi
 
 Arch :
 ----------
-	sudo pacman -S yaourt zsh pep8-python2 python2-pylint ipython2 gvim curl pip2 base-devel git
+	sudo pacman -S yaourt zsh pep8-python2 python2-pylint ipython2 gvim curl pip2 base-devel git ack
 	sudo pip2 install jedi
 
 Linux :
