@@ -15,16 +15,32 @@ source the vimrc inside the original .vimrc:
 
     source X:\vim_config\vimrc.vim
 
+On Windows Ack (Greping Tool) is not as easy to install as Linux,
+To Activite it we will need first activeperl installed:
+32: http://www.activestate.com/activeperl/downloads/thank-you?dl=http://downloads.activestate.com/ActivePerl/releases/5.16.3.1603/ActivePerl-5.16.3.1603-MSWin32-x86-296746.msi
+64: http://www.activestate.com/activeperl/downloads/thank-you?dl=http://downloads.activestate.com/ActivePerl/releases/5.16.3.1603/ActivePerl-5.16.3.1603-MSWin32-x64-296746.msi
+then on the console run:
+perl -MCPAN -e "CPAN::Shell->force(qw(install App::Ack));"
+
+Also, Python:
+http://downloads.activestate.com/ActivePython/releases/2.7.2.5/ActivePython-2.7.2.5-win32-x86.msi
+http://www.lfd.uci.edu/~gohlke/pythonlibs/2jdj6mdn/setuptools-1.1.1.win32-py2.7.exe
+http://www.lfd.uci.edu/~gohlke/pythonlibs/2jdj6mdn/pip-1.4.1.win32-py2.7.exe
+
+Finally:
+pip install ipython pyreadline
+
 Ubuntu :
 ----------
-
 	sudo apt-get install zsh git-core build-essential vim-gtk curl pip ack
-	sudo pip install jedi
 
 Arch :
 ----------
 	sudo pacman -S yaourt zsh pep8-python2 python2-pylint ipython2 gvim curl pip2 base-devel git ack
-	sudo pip2 install jedi
+
+Pip: (General)
+----------
+	sudo pip install jedi
 
 Linux :
 ----------
@@ -37,4 +53,3 @@ Linux :
 	git submodule init
 	git submodule update --recursive
 	echo source ~/.vim_config/vimrc.vim > ~/.vimrc
-
