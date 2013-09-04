@@ -17,17 +17,22 @@ source the vimrc inside the original .vimrc:
 
 On Windows Ack (Greping Tool) is not as easy to install as Linux,
 To Activite it we will need first activeperl installed:
+
 32: http://www.activestate.com/activeperl/downloads/thank-you?dl=http://downloads.activestate.com/ActivePerl/releases/5.16.3.1603/ActivePerl-5.16.3.1603-MSWin32-x86-296746.msi
 64: http://www.activestate.com/activeperl/downloads/thank-you?dl=http://downloads.activestate.com/ActivePerl/releases/5.16.3.1603/ActivePerl-5.16.3.1603-MSWin32-x64-296746.msi
+
 then on the console run:
+
 perl -MCPAN -e "CPAN::Shell->force(qw(install App::Ack));"
 
 Also, Python:
-http://downloads.activestate.com/ActivePython/releases/2.7.2.5/ActivePython-2.7.2.5-win32-x86.msi
-http://www.lfd.uci.edu/~gohlke/pythonlibs/2jdj6mdn/setuptools-1.1.1.win32-py2.7.exe
+
+32: http://downloads.activestate.com/ActivePython/releases/2.7.2.5/ActivePython-2.7.2.5-win32-x86.msi
+64: http://www.lfd.uci.edu/~gohlke/pythonlibs/2jdj6mdn/setuptools-1.1.1.win32-py2.7.exe
 http://www.lfd.uci.edu/~gohlke/pythonlibs/2jdj6mdn/pip-1.4.1.win32-py2.7.exe
 
 Finally:
+
 pip install ipython pyreadline
 
 Ubuntu :
