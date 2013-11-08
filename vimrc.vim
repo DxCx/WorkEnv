@@ -94,13 +94,6 @@ nmap <silent> <C-h> :bprevious<CR>
 " Enable syntax highlight
 syntax on
 
-" Setup syntax checker
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-
-" Completion
-setlocal completeopt-=preview
-let g:jedi#completions_command = "<C-p>"
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_on_dot = 0
+" Fugitive's Autocmds.
+autocmd BufReadPost fugitive://* set bufhidden=delete
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
