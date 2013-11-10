@@ -44,4 +44,5 @@ Linux :
     git submodule init
     git submodule update --recursive
     echo source ~/.vim_config/vimrc.vim > ~/.vimrc
+    chsh ${LOGNAME} -s /bin/zsh
     
