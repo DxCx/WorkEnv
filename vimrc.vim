@@ -53,7 +53,7 @@ set cpoptions=ces$
 " w = buffers from other windows
 " b = buffers loaded in the buffer list
 " k = files from the directory
-" d = include defines 
+" d = include defines
 " i = includes
 " tag complition
 set complete=.,w,b,k,d,i,t
@@ -69,7 +69,7 @@ set incsearch
 set history=1000
 set undolevels=1000
 
-" don't autocomplete to match those file types 
+" don't autocomplete to match those file types
 set wildignore=*.swp,*.bak,*.pyc,*.class
 
 " I Want leader key to be , and not \
@@ -82,18 +82,18 @@ set spelllang=en_us
 autocmd filetype python set expandtab   " Use spaces and not real tabs
 
 function! CmdRun(str)
-    exe a:str
+	exe a:str
 endfunction
 
 let my_grep_base="."
 
 function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
+	exe "menu Foo.Bar :" . a:str
+	emenu Foo.Bar
+	unmenu Foo
 endfunction
 
-function! GrepCursor() 
+function! GrepCursor()
 	exe "normal! viw"
 	call VisualSelection("vimgrep")
 endfunction
@@ -110,7 +110,7 @@ function! VisualSelection(direction) range
 	elseif a:direction == 'vimgrep'
 		" call CmdLine("vimgrep " . '/'. l:pattern . '/ ' . g:my_grep_base . '/**/*.[ch]')
 		call CmdRun("vimgrep " . '/'. l:pattern . '/ ' . g:my_grep_base . '/**/*.[ch]')
-		exe "ccl" 
+		exe "ccl"
 		exe "cwindow"
 	elseif a:direction == 'replace'
 		call CmdLine("%s" . '/'. l:pattern . '/')
@@ -139,3 +139,7 @@ syntax on
 " Fugitive's Autocmds.
 autocmd BufReadPost fugitive://* set bufhidden=delete
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" Status Bar
+" Set xptemplate to more convinent key
+let g:xptemplate_key = '<Tab>'
