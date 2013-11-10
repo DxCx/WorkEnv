@@ -44,5 +44,7 @@ Linux :
     git submodule init
     git submodule update --recursive
     echo source ~/.vim_config/vimrc.vim > ~/.vimrc
+    git config --global core.editor "vim"
+    git config --global merge.tool "vimdiff"
     chsh ${LOGNAME} -s /bin/zsh
     
