@@ -138,8 +138,15 @@ syntax on
 
 " Fugitive's Autocmds.
 autocmd BufReadPost fugitive://* set bufhidden=delete
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-" Status Bar
 " Set xptemplate to more convinent key
 let g:xptemplate_key = '<Tab>'
+
+" Status Bar
+set laststatus=2
+set t_Co=256 " 256 Colors!
+let g:airline_powerline_fonts=1
+let g:airline_theme='murmur'
+let g:airline_section_x=""
+let g:airline_section_y="%{strlen(&ft)?&ft:'none'}:%{&ff}"
+let g:airline_right_sep=''
