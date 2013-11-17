@@ -139,6 +139,9 @@ syntax on
 " Fugitive's Autocmds.
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
+" Autoremove Trailing spaces
+autocmd BufWritePre * :%s/\s\+$//e
+
 " Set xptemplate to more convinent key
 let g:xptemplate_key = '<Tab>'
 
