@@ -153,3 +153,8 @@ let g:airline_theme='murmur'
 let g:airline_section_x=""
 let g:airline_section_y="%{strlen(&ft)?&ft:'none'}:%{&ff}"
 let g:airline_right_sep=''
+
+" Allow overrides via ~/.vim/vimrc.local
+if filereadable(expand("~/.vim/vimrc.local"))
+    source ~/.vim/vimrc.local
+endif
