@@ -32,7 +32,7 @@ Ubuntu :
 Arch :
 ----------
 
-    sudo pacman -S yaourt zsh pep8-python2 python2-pylint ipython2 gvim curl pip2 base-devel git
+    sudo pacman -S yaourt zsh pep8-python2 python2-pylint ipython2 gvim curl python2-pip base-devel git
 
 Linux :
 ----------
