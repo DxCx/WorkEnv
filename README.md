@@ -55,3 +55,7 @@ Powerline fonts:
     cd ..
     rm -Rf powerline-fonts
     sudo fc-cache -vf
+
+To update all plugins:
+----------------
+    git submodule foreach --recursive git fetch
