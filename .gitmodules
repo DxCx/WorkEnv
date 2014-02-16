@@ -19,12 +19,6 @@
 [submodule "bundle/open_file_under_cursor"]
 	path = bundle/open_file_under_cursor
 	url = https://github.com/amix/open_file_under_cursor.vim.git
-[submodule "bundle/fuzzyfinder"]
-	path = bundle/fuzzyfinder
-	url = https://github.com/vim-scripts/FuzzyFinder.git
-[submodule "bundle/L9"]
-	path = bundle/L9
-	url = https://github.com/vim-scripts/L9.git
 [submodule "bundle/fswitch"]
 	path = bundle/fswitch
 	url = https://github.com/derekwyatt/vim-fswitch.git
