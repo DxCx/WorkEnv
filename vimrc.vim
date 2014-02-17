@@ -140,7 +140,7 @@ syntax on
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " remove Trailing spaces on ,<space>
-nmap <silent> <leader><space> :%s/\\s\\+$//g<CR>:w<CR>
+nmap <silent> <leader><space> mzgg=G`z<CR>:w<CR>:%s/\\s\\+$//g<CR>:w<CR>
 
 " Set xptemplate to more convinent key
 let g:xptemplate_key = '<Tab>'
