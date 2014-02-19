@@ -158,3 +158,6 @@ let g:airline_right_sep=''
 if filereadable(expand("~/.vim/vimrc.local"))
     source ~/.vim/vimrc.local
 endif
+
+" CtrlP
+nmap <silent> <leader>f :CtrlP<CR>
