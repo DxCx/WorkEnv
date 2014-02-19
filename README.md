@@ -45,6 +45,7 @@ Linux :
     git config --global core.editor "vim"
     git config --global merge.tool "vimdiff"
     chsh ${LOGNAME} -s /bin/zsh
+    ln -s ${HOME}/.vim_config/tmux.conf ${HOME}/.tmux.conf
 
 Powerline fonts:
 -----------------
