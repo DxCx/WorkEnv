@@ -59,4 +59,5 @@ Powerline fonts:
 
 To update all plugins:
 ----------------
-    git submodule foreach --recursive git fetch
+    git submodule foreach git reset HEAD --hard
+    git submodule foreach git pull origin master
