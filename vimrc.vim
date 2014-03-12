@@ -161,3 +161,6 @@ endif
 
 " CtrlP
 nmap <silent> <leader>f :CtrlP<CR>
+
+" Mako template syntax:
+au BufNewFile,BufRead *.tmpl set filetype=mako
