@@ -169,11 +169,18 @@ au BufNewFile,BufRead *.tmpl set filetype=mako
 let g:EasyMotion_do_mapping=0
 map w <Plug>(easymotion-w)
 map W <Plug>(easymotion-W)
-map f <Plug>(easymotion-f)
-map F <Plug>(easymotion-F)
-map t <Plug>(easymotion-t)
-map T <Plug>(easymotion-T)
 map e <Plug>(easymotion-e)
 map E <Plug>(easymotion-E)
 map b <Plug>(easymotion-b)
 map B <Plug>(easymotion-B)
+" map f <Plug>(easymotion-f)
+" map F <Plug>(easymotion-F)
+" map t <Plug>(easymotion-t)
+" map T <Plug>(easymotion-T)
+
+" Gundo Mapping
+map <silent> <F3> :GundoToggle<CR>
+
+" Relative numbering
+set relativenumber
+map <silent> - :set relativenumber!<CR>
