@@ -6,7 +6,7 @@ let &runtimepath.=','.escape(expand('<sfile>:p:h'), '\,')
 
 " Setup Pathogen
 runtime pathogen/autoload/pathogen.vim
-call pathogen#incubate()
+call pathogen#infect('bundle/{}')
 call pathogen#helptags()
 
 " set filetype stuff on
