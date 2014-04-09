@@ -44,6 +44,8 @@ Linux :
     echo source ~/.vim_config/vimrc.vim > ~/.vimrc
     git config --global core.editor "vim"
     git config --global merge.tool "vimdiff"
+    git config --global color.ui auto
+    git config --global branch.autosetuprebase always
     chsh ${LOGNAME} -s /bin/zsh
     ln -s ${HOME}/.vim_config/tmux.conf ${HOME}/.tmux.conf
 
