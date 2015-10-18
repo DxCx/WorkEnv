@@ -202,4 +202,17 @@ function HexMe()
 endfunction
 
 " Enable Hardmode :) (Disabled at the moment until relative will work)
+" Until issue resolve, No arrow keys
+map   <Up>     <NOP>
+map   <Down>   <NOP>
+map   <Left>   <NOP>
+map   <Right>  <NOP>
+imap   <Up>     <NOP>
+imap   <Down>   <NOP>
+imap   <Left>   <NOP>
+imap   <Right>  <NOP>
+vmap   <Up>     <NOP>
+vmap   <Down>   <NOP>
+vmap   <Left>   <NOP>
+vmap   <Right>  <NOP>
 "autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
