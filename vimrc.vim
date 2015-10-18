@@ -200,3 +200,6 @@ function HexMe()
 		let $in_hex=1
 	endif
 endfunction
+
+" Enable Hardmode :) (Disabled at the moment until relative will work)
+"autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
