@@ -13,8 +13,13 @@ call pathogen#helptags()
 filetype on
 filetype plugin on
 
-" Color Scheme Desert (Changed BG to black)
-colorscheme dxcx_desert
+" Enable syntax highlight
+syntax enable
+
+" Color Scheme Solorized Dark
+let g:solarized_termcolors=256
+colorscheme solarized
+set background=dark
 
 " Forget being compatible with good ol' vi
 " and enable hidden buffers support
@@ -132,9 +137,6 @@ nmap <silent> <leader>s :set spell!<CR>
 nmap <silent> <F5> :make<CR>
 nmap <silent> <C-l> :bnext<CR>
 nmap <silent> <C-h> :bprevious<CR>
-
-" Enable syntax highlight
-syntax on
 
 " Fugitive's Autocmds.
 autocmd BufReadPost fugitive://* set bufhidden=delete
