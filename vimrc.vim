@@ -84,8 +84,10 @@ let mapleader=","
 " Set region to English
 set spelllang=en_us
 
-" Python spcific settings
+" Python specific settings
 autocmd filetype python set expandtab   " Use spaces and not real tabs
+" coffee specific settings
+autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 
 function! CmdRun(str)
 	exe a:str
