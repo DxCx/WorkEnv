@@ -12,6 +12,7 @@ call pathogen#helptags()
 " set filetype stuff on
 filetype on
 filetype plugin on
+filetype plugin indent on
 
 " Enable syntax highlight
 syntax enable
