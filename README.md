@@ -13,7 +13,7 @@ then don't forget to do:
 After the repository is created don't forget to
 source the vimrc inside the original .vimrc:
 
-    source X:\dxcx_workenv\vimrc.vim
+    source X:\dxcx_workenv\vim\vimrc.vim
 
 Python:
 
@@ -41,7 +41,7 @@ Linux :
     cd ~
     git clone --recursive https://github.com/DxCx/WorkEnv .dxcx_workenv
     cd .dxcx_workenv
-    echo source `pwd`/vimrc.vim > ~/.vimrc
+    echo source `pwd`/vim/vimrc.vim > ~/.vimrc
     echo source-file `pwd`/tmux.conf > ~/.tmux.conf
     git config --global core.editor "vim"
     git config --global merge.tool "vimdiff"
