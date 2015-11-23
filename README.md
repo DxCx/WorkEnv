@@ -52,7 +52,7 @@ Linux :
 Powerline fonts:
 -----------------
     pushd ~/.dxcx_workenv/terminal/powerline-fonts
-    find -type d -not -iwholename '*.git*' -exec sudo mv {} /usr/share/fonts/ \;
+    find -type d -not -iwholename '*.git*' -exec sudo cp {} /usr/share/fonts/ \;
     popd
     sudo fc-cache -vf
 
