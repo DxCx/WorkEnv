@@ -13,7 +13,7 @@ then don't forget to do:
 After the repository is created don't forget to
 source the vimrc inside the original .vimrc:
 
-    source X:\vim_config\vimrc.vim
+    source X:\dxcx_workenv\vimrc.vim
 
 Python:
 
@@ -39,15 +39,15 @@ Linux :
 
     curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | bash
     cd ~
-    git clone --recursive https://github.com/DxCx/MyVimRc .vim_config
-    cd .vim_config
-    echo source ~/.vim_config/vimrc.vim > ~/.vimrc
+    git clone --recursive https://github.com/DxCx/WorkEnv .dxcx_workenv
+    cd .dxcx_workenv
+    echo source ~/.dxcx_workenv/vimrc.vim > ~/.vimrc
     git config --global core.editor "vim"
     git config --global merge.tool "vimdiff"
     git config --global color.ui auto
     git config --global branch.autosetuprebase always
     chsh ${LOGNAME} -s /bin/zsh
-    ln -s ${HOME}/.vim_config/tmux.conf ${HOME}/.tmux.conf
+    ln -s ${HOME}/.dxcx_workenv/tmux.conf ${HOME}/.tmux.conf
 
 Powerline fonts:
 -----------------
