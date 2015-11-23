@@ -13,7 +13,7 @@ then don't forget to do:
 After the repository is created don't forget to
 source the vimrc inside the original .vimrc:
 
-    source X:\dxcx_workenv\vimrc.vim
+    source X:\dxcx_workenv\vim\vimrc.vim
 
 Python:
 
@@ -41,8 +41,8 @@ Linux :
     cd ~
     git clone --recursive https://github.com/DxCx/WorkEnv .dxcx_workenv
     cd .dxcx_workenv
-    echo source `pwd`/vimrc.vim > ~/.vimrc
-    echo source-file `pwd`/tmux.conf > ~/.tmux.conf
+    echo source `pwd`/vim/vimrc.vim > ~/.vimrc
+    echo source-file `pwd`/tmux/tmux.conf > ~/.tmux.conf
     git config --global core.editor "vim"
     git config --global merge.tool "vimdiff"
     git config --global color.ui auto
@@ -51,12 +51,9 @@ Linux :
 
 Powerline fonts:
 -----------------
-    cd ~
-    git clone https://github.com/Lokaltog/powerline-fonts
-    cd powerline-fonts
+    pushd ~/.dxcx_workenv/terminal/powerline-fonts
     find -type d -not -iwholename '*.git*' -exec sudo mv {} /usr/share/fonts/ \;
-    cd ..
-    rm -Rf powerline-fonts
+    popd
     sudo fc-cache -vf
 
 To update all plugins:

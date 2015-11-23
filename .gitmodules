@@ -1,69 +1,72 @@
-[submodule "pathogen"]
-	path = pathogen
+[submodule "vim/pathogen"]
+	path = vim/pathogen
 	url = https://github.com/tpope/vim-pathogen
-[submodule "bundle/protodef"]
-	path = bundle/protodef
+[submodule "vim/bundle/protodef"]
+	path = vim/bundle/protodef
 	url = https://github.com/derekwyatt/vim-protodef
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
-[submodule "bundle/xptemplate"]
-	path = bundle/xptemplate
+[submodule "vim/bundle/xptemplate"]
+	path = vim/bundle/xptemplate
 	url = https://github.com/drmingdrmer/xptemplate.git
-[submodule "bundle/nerdcommenter"]
-	path = bundle/nerdcommenter
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "bundle/open_file_under_cursor"]
-	path = bundle/open_file_under_cursor
+[submodule "vim/bundle/open_file_under_cursor"]
+	path = vim/bundle/open_file_under_cursor
 	url = https://github.com/amix/open_file_under_cursor.vim.git
-[submodule "bundle/fswitch"]
-	path = bundle/fswitch
+[submodule "vim/bundle/fswitch"]
+	path = vim/bundle/fswitch
 	url = https://github.com/derekwyatt/vim-fswitch.git
-[submodule "bundle/tabular"]
-	path = bundle/tabular
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular
-[submodule "bundle/fugitive"]
-	path = bundle/fugitive
+[submodule "vim/bundle/fugitive"]
+	path = vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "bundle/gundo"]
-	path = bundle/gundo
+[submodule "vim/bundle/gundo"]
+	path = vim/bundle/gundo
 	url = https://github.com/sjl/gundo.vim
-[submodule "bundle/html5-syntax"]
-	path = bundle/html5-syntax
+[submodule "vim/bundle/html5-syntax"]
+	path = vim/bundle/html5-syntax
 	url = https://github.com/othree/html5-syntax.vim
-[submodule "bundle/DirDiff"]
-	path = bundle/DirDiff
+[submodule "vim/bundle/DirDiff"]
+	path = vim/bundle/DirDiff
 	url = git://github.com/vim-scripts/DirDiff.vim.git
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "bundle/sparkup"]
-	path = bundle/sparkup
+[submodule "vim/bundle/sparkup"]
+	path = vim/bundle/sparkup
 	url = https://github.com/bingaman/vim-sparkup.git
-[submodule "bundle/jedi"]
-	path = bundle/jedi
+[submodule "vim/bundle/jedi"]
+	path = vim/bundle/jedi
 	url = https://github.com/davidhalter/jedi-vim.git
-[submodule "bundle/airline"]
-	path = bundle/airline
+[submodule "vim/bundle/airline"]
+	path = vim/bundle/airline
 	url = https://github.com/bling/vim-airline.git
-[submodule "bundle/ctrlp"]
-	path = bundle/ctrlp
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
-[submodule "bundle/vim-bundle-mako"]
-	path = bundle/vim-bundle-mako
+[submodule "vim/bundle/vim-bundle-mako"]
+	path = vim/bundle/vim-bundle-mako
 	url = https://github.com/sophacles/vim-bundle-mako.git
-[submodule "bundle/vim-easymotion"]
-	path = bundle/vim-easymotion
+[submodule "vim/bundle/vim-easymotion"]
+	path = vim/bundle/vim-easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
-[submodule "bundle/vim-misc"]
-	path = bundle/vim-misc
+[submodule "vim/bundle/vim-misc"]
+	path = vim/bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
-[submodule "bundle/hardmode"]
-	path = bundle/hardmode
+[submodule "vim/bundle/hardmode"]
+	path = vim/bundle/hardmode
 	url = https://github.com/wikitopian/hardmode.git
-[submodule "bundle/solarized-theme.vim"]
-	path = bundle/solarized-theme.vim
+[submodule "vim/bundle/solarized-theme.vim"]
+	path = vim/bundle/solarized-theme.vim
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/vim-coffee-script"]
-	path = bundle/vim-coffee-script
+[submodule "vim/bundle/vim-coffee-script"]
+	path = vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "terminal/powerline-fonts"]
+	path = terminal/powerline-fonts
+	url = https://github.com/Lokaltog/powerline-fonts
