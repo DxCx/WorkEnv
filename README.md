@@ -51,12 +51,9 @@ Linux :
 
 Powerline fonts:
 -----------------
-    cd ~
-    git clone https://github.com/Lokaltog/powerline-fonts
-    cd powerline-fonts
+    pushd ~/.dxcx_workenv/terminal/powerline-fonts
     find -type d -not -iwholename '*.git*' -exec sudo mv {} /usr/share/fonts/ \;
-    cd ..
-    rm -Rf powerline-fonts
+    popd
     sudo fc-cache -vf
 
 To update all plugins:

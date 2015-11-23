@@ -67,3 +67,6 @@
 [submodule "vim/bundle/vim-coffee-script"]
 	path = vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "terminal/powerline-fonts"]
+	path = terminal/powerline-fonts
+	url = https://github.com/Lokaltog/powerline-fonts
