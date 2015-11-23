@@ -45,6 +45,7 @@ Linux :
     echo export PATH=\"${PATH}\" > ~/.zshrc
     echo export ENV_DIR_PATH=`pwd` >> ~/.zshrc
     echo source \${ENV_DIR_PATH}/terminal/zshrc >> ~/.zshrc
+    `pwd`/tmux/tpm/bin/install_plugins
     git config --global core.editor "vim"
     git config --global merge.tool "vimdiff"
     git config --global color.ui auto
