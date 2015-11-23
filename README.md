@@ -44,8 +44,9 @@ Linux :
     cp `pwd`/tmux/base_tmux.conf ~/.tmux.conf
     echo export PATH=\"${PATH}\" > ~/.zshrc
     echo export ENV_DIR_PATH=`pwd` >> ~/.zshrc
+    source ~/.zshrc
     echo source \${ENV_DIR_PATH}/terminal/zshrc >> ~/.zshrc
-    `pwd`/tmux/tpm/bin/install_plugins
+    ${ENV_DIR_PATH}/tmux/tpm/bin/install_plugins
     git config --global core.editor "vim"
     git config --global merge.tool "vimdiff"
     git config --global color.ui auto
@@ -59,7 +60,7 @@ Powerline fonts:
     popd
     sudo fc-cache -vf
 
-Solorized XFCE4 shell:
+Solarized XFCE4 shell:
 ------------------
     pushd ~/.dxcx_workenv/terminal/xfce4-terminal-colors-solarized
     cp dark/terminalrc ~/.config/xfce4/terminal/terminalrc
