@@ -37,12 +37,14 @@ Arch :
 Linux :
 ----------
 
-    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | bash
     cd ~
     git clone --recursive https://github.com/DxCx/WorkEnv .dxcx_workenv
     cd .dxcx_workenv
     echo source `pwd`/vim/vimrc.vim > ~/.vimrc
     echo source-file `pwd`/tmux/tmux.conf > ~/.tmux.conf
+    echo export PATH=\"${PATH}\" > ~/.zshrc
+    echo export ENV_DIR_PATH=`pwd` >> ~/.zshrc
+    echo source \${ENV_DIR_PATH}/terminal/zshrc >> ~/.zshrc
     git config --global core.editor "vim"
     git config --global merge.tool "vimdiff"
     git config --global color.ui auto
