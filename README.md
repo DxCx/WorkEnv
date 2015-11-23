@@ -58,6 +58,12 @@ Powerline fonts:
     popd
     sudo fc-cache -vf
 
+Solorized XFCE4 shell:
+------------------
+    pushd ~/.dxcx_workenv/terminal/xfce4-terminal-colors-solarized
+    cp dark/terminalrc ~/.config/xfce4/terminal/terminalrc
+    popd
+
 To update all plugins:
 ----------------
     git submodule foreach 'git remote update origin; git fetch origin; git checkout $(git rev-parse --abbrev-ref HEAD); git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); git submodule update --recursive; git clean -dfx'
