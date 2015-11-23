@@ -42,12 +42,12 @@ Linux :
     git clone --recursive https://github.com/DxCx/WorkEnv .dxcx_workenv
     cd .dxcx_workenv
     echo source ~/.dxcx_workenv/vimrc.vim > ~/.vimrc
+    echo source-file ~/.dxcx_workenv/tmux.conf > ~/.tmux.conf
     git config --global core.editor "vim"
     git config --global merge.tool "vimdiff"
     git config --global color.ui auto
     git config --global branch.autosetuprebase always
     chsh ${LOGNAME} -s /bin/zsh
-    ln -s ${HOME}/.dxcx_workenv/tmux.conf ${HOME}/.tmux.conf
 
 Powerline fonts:
 -----------------
