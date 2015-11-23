@@ -41,8 +41,8 @@ Linux :
     cd ~
     git clone --recursive https://github.com/DxCx/WorkEnv .dxcx_workenv
     cd .dxcx_workenv
-    echo source ~/.dxcx_workenv/vimrc.vim > ~/.vimrc
-    echo source-file ~/.dxcx_workenv/tmux.conf > ~/.tmux.conf
+    echo source `pwd`/vimrc.vim > ~/.vimrc
+    echo source-file `pwd`/tmux.conf > ~/.tmux.conf
     git config --global core.editor "vim"
     git config --global merge.tool "vimdiff"
     git config --global color.ui auto
