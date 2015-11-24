@@ -41,7 +41,7 @@ Linux :
     git clone --recursive https://github.com/DxCx/WorkEnv .dxcx_workenv
     cd .dxcx_workenv
     echo source `pwd`/vim/vimrc.vim > ~/.vimrc
-    cp `pwd`/tmux/base_tmux.conf ~/.tmux.conf
+    echo source-file \${ENV_DIR_PATH}/tmux/tmux.conf > ~/.tmux.conf
     echo export PATH=\"${PATH}\" > ~/.zshrc
     echo export ENV_DIR_PATH=`pwd` >> ~/.zshrc
     source ~/.zshrc
