@@ -90,3 +90,6 @@ function git_prompt_info() {
     echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}${ZSH_THEME_GIT_PROMPT_CLEAN}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
 }
 alias mybranch='git branch | grep ^\* | awk "{ print \$2 }"'
+
+# Load functions:
+autoload -U zmv
