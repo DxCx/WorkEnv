@@ -50,10 +50,14 @@ filetype plugin indent on
 " Enable syntax highlight
 syntax enable
 
-" Color Scheme Solorized Dark
+" Color Scheme Solarized Dark
 let g:solarized_termcolors=256
-colorscheme solarized
-set background=dark
+try
+    colorscheme solarized
+    set background=dark
+catch /^Vim\%((\a\+)\)\=:E185/
+	silent !echo "Solorized theme is not installed yet"
+endtry
 
 " Forget being compatible with good ol' vi
 " and enable hidden buffers support
