@@ -4,10 +4,43 @@ set shellslash
 " first set runtimepath to this directory.
 let &runtimepath.=','.escape(expand('<sfile>:p:h'), '\,')
 
-" Setup Pathogen
-runtime pathogen/autoload/pathogen.vim
-call pathogen#infect('bundle/{}')
-call pathogen#helptags()
+" Setup Vundle
+exec 'set rtp+=' . expand('${ENV_DIR_PATH}/vim/bundle/Vundle.vim')
+call vundle#begin(eval('$ENV_DIR_PATH') . '/vim/bundle')
+
+" Plugins
+Plugin 'VundleVim/Vundle.vim'
+" --------------------------------------
+
+Plugin 'vim-scripts/DirDiff.vim.git'
+Plugin 'bling/vim-airline.git'
+Plugin 'kien/ctrlp.vim.git'
+Plugin 'derekwyatt/vim-fswitch.git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'sjl/gundo.vim'
+Plugin 'wikitopian/hardmode.git'
+Plugin 'othree/html5-syntax.vim'
+Plugin 'davidhalter/jedi-vim.git'
+Plugin 'scrooloose/nerdcommenter.git'
+Plugin 'scrooloose/nerdtree'
+Plugin 'amix/open_file_under_cursor.vim.git'
+Plugin 'derekwyatt/vim-protodef'
+Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'bingaman/vim-sparkup.git'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'godlygeek/tabular'
+Plugin 'tmux-plugins/vim-tmux-focus-events.git'
+Plugin 'sophacles/vim-bundle-mako.git'
+Plugin 'kchmck/vim-coffee-script.git'
+Plugin 'Lokaltog/vim-easymotion.git'
+Plugin 'airblade/vim-gitgutter.git'
+Plugin 'xolox/vim-misc.git'
+Plugin 'tmux-plugins/vim-tmux.git'
+Plugin 'drmingdrmer/xptemplate.git'
+
+" Keep last, end of plugins
+call vundle#end()
+" --------------------------------------
 
 " set filetype stuff on
 filetype on
