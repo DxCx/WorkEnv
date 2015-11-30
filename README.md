@@ -48,6 +48,7 @@ Linux :
     echo source \${ENV_DIR_PATH}/terminal/zshrc >> ~/.zshrc
     ${ENV_DIR_PATH}/tmux/tpm/bin/install_plugins
     vim +BundleInstall +qall
+    git config fetch.recurseSubmodules true
     git config --global core.editor "vim"
     git config --global merge.tool "vimdiff"
     git config --global color.ui auto
