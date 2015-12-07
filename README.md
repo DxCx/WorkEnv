@@ -36,24 +36,18 @@ Arch :
 
 Linux :
 ----------
+Easy Install script attached.
+#### via curl
 
-    cd ~
-    git clone --recursive https://github.com/DxCx/WorkEnv .dxcx_workenv
-    cd .dxcx_workenv
-    echo source `pwd`/vim/vimrc.vim > ~/.vimrc
-    echo source-file \${ENV_DIR_PATH}/tmux/tmux.conf > ~/.tmux.conf
-    echo export PATH=\"${PATH}\" > ~/.zshrc
-    echo export ENV_DIR_PATH=`pwd` >> ~/.zshrc
-    source ~/.zshrc
-    echo source \${ENV_DIR_PATH}/terminal/zshrc >> ~/.zshrc
-    ${ENV_DIR_PATH}/tmux/tpm/bin/install_plugins
-    vim +BundleInstall +qall
-    git config fetch.recurseSubmodules true
-    git config --global core.editor "vim"
-    git config --global merge.tool "vimdiff"
-    git config --global color.ui auto
-    git config --global branch.autosetuprebase always
-    chsh ${LOGNAME} -s /bin/zsh
+```shell
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/DxCx/WorkEnv/master/install.sh)"
+```
+
+#### via wget
+
+```shell
+bash -c "$(wget https://raw.githubusercontent.com/DxCx/WorkEnv/master/install.sh -O -)"
+```
 
 Powerline fonts (System Wide):
 -----------------
