@@ -1,9 +1,6 @@
 [submodule "terminal/oh-my-zsh"]
 	path = terminal/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh
-[submodule "terminal/xfce4-terminal-colors-solarized"]
-	path = terminal/xfce4-terminal-colors-solarized
-	url = https://github.com/sgerrand/xfce4-terminal-colors-solarized.git
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = https://github.com/DxCx/tpm
