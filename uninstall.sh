@@ -13,6 +13,10 @@ echo "Uninstalling... (${ENV_DIR_PATH})"
 rm -f ~/.vimrc
 rm -f ~/.tmux.conf
 rm -f ~/.zshrc
+rm -f ~/.config/xfce4/terminal/terminalrc
+rm -f ~/.fonts/PowerlineSymbols.otf
+rm -f ~/.config/fontconfig/conf.d/10-powerline-symbols.conf 
+fc-cache -vf ~/.fonts
 rm -Rf ${ENV_DIR_PATH}
 
 chsh ${LOGNAME} -s /bin/bash
