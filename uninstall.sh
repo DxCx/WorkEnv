@@ -13,7 +13,7 @@ echo "Uninstalling... (${ENV_DIR_PATH})"
 rm -f ~/.vimrc
 rm -f ~/.tmux.conf
 rm -f ~/.zshrc
-rm -f ${ENV_DIR_PATH}
+rm -Rf ${ENV_DIR_PATH}
 
 chsh ${LOGNAME} -s /bin/bash
 exec /bin/bash
