@@ -27,19 +27,6 @@ Finally:
 pip install ipython pyreadline
 ```
 
-Ubuntu :
-----------
-```shell
-sudo apt-get install zsh git-core build-essential vim-gtk curl python-pip xclip
-```
-
-Arch :
-----------
-
-```shell
-sudo pacman -S yaourt zsh pep8-python2 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip
-```
-
 Linux :
 ----------
 Easy Install script attached.
