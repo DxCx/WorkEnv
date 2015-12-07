@@ -140,11 +140,11 @@ function load_enviroment() {
 	echo source \${ENV_DIR_PATH}/terminal/zshrc >> ~/.zshrc
 }
 
-# Loading initial enviorment
-load_enviroment
-
 # Install operation system dependancies
 check_n_install_os_deps
+
+# Loading initial enviorment
+load_enviroment
 
 # Install plugins
 opt_oper "Download and install all plugins now" install_plugins
