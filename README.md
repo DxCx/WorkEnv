@@ -57,9 +57,12 @@ Linux :
 
 Powerline fonts (System Wide):
 -----------------
-    pushd ~/.dxcx_workenv/terminal/powerline-fonts
-    find -type d -not -iwholename '*.git*' -exec sudo cp -Rf {} /usr/share/fonts/ \;
-    popd
+    cd ~
+    git clone https://github.com/Lokaltog/powerline-fonts
+    cd powerline-fonts
+    find -type d -not -iwholename '*.git*' -exec sudo mv {} /usr/share/fonts/ \;
+    cd ..
+    rm -Rf powerline-fonts
     sudo fc-cache -vf
 
 Powerline fonts (Single User):

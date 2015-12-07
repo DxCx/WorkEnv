@@ -1,6 +1,3 @@
-[submodule "terminal/powerline-fonts"]
-	path = terminal/powerline-fonts
-	url = https://github.com/Lokaltog/powerline-fonts
 [submodule "terminal/oh-my-zsh"]
 	path = terminal/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh
