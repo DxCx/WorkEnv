@@ -29,7 +29,7 @@ pip install ipython pyreadline
 
 Linux :
 ----------
-Easy Install script attached.
+Easy Install script attached, To skip the installation prompts (Assumes all yes) use NOCONFIRM=1 before the bash command.
 #### via curl
 
 ```shell
