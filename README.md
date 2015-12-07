@@ -54,27 +54,6 @@ rm -Rf powerline-fonts
 sudo fc-cache -vf
 ```
 
-Powerline fonts (Single User):
-------------------
-```shell
-wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf
-wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
-mkdir -p ~/.fonts/ && mv PowerlineSymbols.otf ~/.fonts/
-fc-cache -vf ~/.fonts
-mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
-```
-
-Solarized XFCE4 shell:
-------------------
-```shell
-cd ~
-git clone https://github.com/sgerrand/xfce4-terminal-colors-solarized.git
-pushd xfce4-terminal-colors-solarized
-cp dark/terminalrc ~/.config/xfce4/terminal/terminalrc
-popd
-rm -Rf xfce4-terminal-colors-solarized
-```
-
 To update all plugins:
 ----------------
 ```shell

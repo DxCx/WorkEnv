@@ -112,7 +112,6 @@ function config_git() {
 function set_default_zsh() {
 	if [[ -x /bin/zsh ]]; then
 		chsh ${LOGNAME} -s /bin/zsh
-		exec /bin/zsh
 	else
 		echo "Zsh was not found on your system. (/bin/zsh)"
 	fi
@@ -140,6 +139,26 @@ function load_enviroment() {
 	echo source \${ENV_DIR_PATH}/terminal/zshrc >> ~/.zshrc
 }
 
+function install_xfce4_theme() {
+	pushd ~
+	git clone https://github.com/sgerrand/xfce4-terminal-colors-solarized.git
+	pushd xfce4-terminal-colors-solarized
+	cp dark/terminalrc ~/.config/xfce4/terminal/terminalrc
+	popd
+	rm -Rf xfce4-terminal-colors-solarized
+	popd
+}
+
+function install_powerline_fonts() {
+	pushd ~
+	wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf
+	wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+	mkdir -p ~/.fonts/ && mv PowerlineSymbols.otf ~/.fonts/
+	fc-cache -vf ~/.fonts
+	mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+	popd
+}
+
 # Install operation system dependancies
 check_n_install_os_deps
 
@@ -152,6 +171,12 @@ opt_oper "Download and install all plugins now" install_plugins
 # Config git
 git config fetch.recurseSubmodules true
 opt_oper "Configure git" config_git
+
+# Install powerline-fonts
+opt_oper "Install powerline fonts for local user" install_powerline_fonts
+
+# Install terminal theme
+opt_oper "Download and install XFCE4 terminal theme" install_xfce4_theme
 
 # Change zsh to default shell (Keep last)
 opt_oper "Use ZSH as default shell" set_default_zsh
