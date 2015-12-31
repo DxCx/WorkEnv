@@ -159,6 +159,12 @@ function install_powerline_fonts() {
 	popd
 }
 
+function install_xfce_shortcuts() {
+	# TODO: backup instead of remove
+	rm -f ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+	ln -s ${ENV_DIR_PATH}/xfce/xfce4-keyboard-shortcuts.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/ 
+}
+
 # Install operation system dependancies
 check_n_install_os_deps
 
@@ -177,6 +183,9 @@ opt_oper "Install powerline fonts for local user" install_powerline_fonts
 
 # Install terminal theme
 opt_oper "Download and install XFCE4 terminal theme" install_xfce4_theme
+
+# Update keyboard shortcuts
+opt_oper "Do you want to replace XFCE4 keyboard shortcuts" install_xfce_shortcuts
 
 # Change zsh to default shell (Keep last)
 opt_oper "Use ZSH as default shell" set_default_zsh
