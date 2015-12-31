@@ -1,9 +1,9 @@
 #!/bin/bash
 
 NOCONFIRM=${NOCONFIRM:-0}
-DEBIAN_DEPENDS=(zsh git-core build-essential vim-gtk curl python-pip xclip)
-RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip)
-ARCH_DEPENDS=(yaourt zsh python2-pep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip)
+DEBIAN_DEPENDS=(zsh git-core build-essential vim-gtk curl python-pip xclip tmux)
+RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip tmux)
+ARCH_DEPENDS=(yaourt zsh python2-pep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux)
 
 function opt_oper() {
 	# Read question and shift arguments ($2 = $1)
