@@ -9,17 +9,25 @@ function opt_oper() {
 	# Read question and shift arguments ($2 = $1)
 	question=$1
 	shift
+	# Read default_val and shift arguments ($2 = $1)
+	default_val=$1
+	shift
+
+	DEFSTR="Y/n"
+	if [[ ${default_val} = false ]]; then
+		DEFSTR="y/N"
+	fi
 
 	if [[ ${NOCONFIRM} != 0 ]]; then
 		# If no confirm, then just fill empty reply.
 		REPLY=""
 	else
 		# Prompt the user for next step
-		read -p "Would you like to ${question} (Y/n)? " -n 1 -r
+		read -p "Would you like to ${question} (${default_val})? " -n 1 -r
 		echo # New Line
 	fi
 
-	if [[ $REPLY =~ ^[Yy]$ || $REPLY = "" ]]; then
+	if [[ $REPLY =~ ^[Yy]$ ]] || [[ $REPLY = "" && ${default_val} = true ]]; then
 		$@
 	fi
 }
@@ -53,12 +61,12 @@ function install_missing_os_deps()
 	fi
 
 	# Check if installation is successful
-	if [[ $? -eq 0 && ! -z $NOPKGMANAGER ]] ; then
+	if [[ $? = 0 && ! -z $NOPKGMANAGER ]] ; then
 		echo "All dependencies are satisfied."
 	# Else, if installation isn't successful
 	else
 		echo "ERROR: impossible to found a package manager in your sistem. Please, install manually: ${PKGSTOINSTALL}."
-		opt_oper "Exit" bail_error
+		opt_oper "Exit" true bail_error
 	fi
 }
 
@@ -81,7 +89,7 @@ function check_n_install_os_deps()
 		QCMD="pacman -Qq | grep \"\$i\" || pacman -Qqg | grep \"\$i\""
 	else
 		echo "ERROR: Couldn't find package manager"
-		opt_oper "Exit" bail_error
+		opt_oper "Exit" true bail_error
 		return
 	fi
 
@@ -93,7 +101,7 @@ function check_n_install_os_deps()
 	done
 
 	if [ "$PKGSTOINSTALL" != "" ]; then
-		opt_oper "Install missing dependancies" install_missing_os_deps $PKGSTOINSTALL
+		opt_oper "Install missing dependancies" true install_missing_os_deps $PKGSTOINSTALL
 	fi
 }
 
@@ -172,20 +180,20 @@ check_n_install_os_deps
 load_enviroment
 
 # Install plugins
-opt_oper "Download and install all plugins now" install_plugins
+opt_oper "Download and install all plugins now" true install_plugins
 
 # Config git
 git config fetch.recurseSubmodules true
-opt_oper "Configure git" config_git
+opt_oper "Configure git" true config_git
 
 # Install powerline-fonts
-opt_oper "Install powerline fonts for local user" install_powerline_fonts
+opt_oper "Install powerline fonts for local user" false install_powerline_fonts
 
 # Install terminal theme
-opt_oper "Download and install XFCE4 terminal theme" install_xfce4_theme
+opt_oper "Download and install XFCE4 terminal theme" false install_xfce4_theme
 
 # Update keyboard shortcuts
-opt_oper "Do you want to replace XFCE4 keyboard shortcuts" install_xfce_shortcuts
+opt_oper "Do you want to replace XFCE4 keyboard shortcuts" false install_xfce_shortcuts
 
 # Change zsh to default shell (Keep last)
-opt_oper "Use ZSH as default shell" set_default_zsh
+opt_oper "Use ZSH as default shell" true set_default_zsh
