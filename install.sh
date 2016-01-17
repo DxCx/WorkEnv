@@ -1,9 +1,9 @@
 #!/bin/bash
 
 NOCONFIRM=${NOCONFIRM:-0}
-DEBIAN_DEPENDS=(zsh git-core build-essential vim-gtk curl python-pip xclip tmux)
-RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip tmux)
-ARCH_DEPENDS=(yaourt zsh python2-pep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux)
+DEBIAN_DEPENDS=(zsh git-core build-essential vim curl python-pip tmux wget gettext-base)
+RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip tmux wget)
+ARCH_DEPENDS=(yaourt zsh python2-pep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux wget)
 
 function opt_oper() {
 	# Read question and shift arguments ($2 = $1)
@@ -23,7 +23,7 @@ function opt_oper() {
 		REPLY=""
 	else
 		# Prompt the user for next step
-		read -p "Would you like to ${question} (${default_val})? " -n 1 -r
+		read -p "Would you like to ${question} (${DEFSTR})? " -n 1 -r
 		echo # New Line
 	fi
 
@@ -39,10 +39,11 @@ function bail_error()
 
 function install_missing_os_deps()
 {
+	NOPKGMANAGER=false
 	PKGSTOINSTALL=$@
 	# Debian, Ubuntu and derivatives (with apt-get)
 	if which apt-get &> /dev/null; then
-		sudo apt-get install $PKGSTOINSTALL
+		sudo apt-get install -y $PKGSTOINSTALL
 	# OpenSuse (with zypper)
 	elif which zypper &> /dev/null; then
 		sudo zypper in $PKGSTOINSTALL
@@ -54,18 +55,18 @@ function install_missing_os_deps()
 		sudo yum install $PKGSTOINSTALL
 	# ArchLinux (with pacman)
 	elif which pacman &> /dev/null; then
-		sudo pacman -Sy $PKGSTOINSTALL
+		sudo pacman --noconfirm -Sy $PKGSTOINSTALL
 	# Else, if no package manager has been founded
 	else
-		NOPKGMANAGER=TRUE
+		NOPKGMANAGER=true
 	fi
 
 	# Check if installation is successful
-	if [[ $? = 0 && ! -z $NOPKGMANAGER ]] ; then
+	if [[ $? = 0 && false = $NOPKGMANAGER ]] ; then
 		echo "All dependencies are satisfied."
 	# Else, if installation isn't successful
 	else
-		echo "ERROR: impossible to found a package manager in your sistem. Please, install manually: ${PKGSTOINSTALL}."
+		echo "ERROR: impossible to found a package manager in your system. Please, install manually: ${PKGSTOINSTALL}."
 		opt_oper "Exit" true bail_error
 	fi
 }
@@ -78,7 +79,7 @@ function check_n_install_os_deps()
 	# Debian, Ubuntu (with dpkg)
 	if which dpkg &> /dev/null; then
 		DEPENDENCIES=(${DEBIAN_DEPENDS[@]})
-		QCMD="dpkg -l | grep -w \"ii \$i \""
+		QCMD="dpkg -l | grep -w \"ii\s\s\$i \""
 	# OpenSuse, Mandriva, Fedora, CentOs, ecc. (with rpm)
 	elif which rpm &> /dev/null; then
 		DEPENDENCIES=(${RH_DEPENDS[@]})
