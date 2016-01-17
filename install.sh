@@ -68,7 +68,7 @@ function check_n_install_os_deps()
 	PKGSTOINSTALL=""
 
 	# Debian, Ubuntu (with dpkg)
-	if which dkpg &> /dev/null; then
+	if which dpkg &> /dev/null; then
 		DEPENDENCIES=(${DEBIAN_DEPENDS[@]})
 		QCMD="dpkg -l | grep -w \"ii \$i \""
 	# OpenSuse, Mandriva, Fedora, CentOs, ecc. (with rpm)
