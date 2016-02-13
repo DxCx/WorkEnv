@@ -37,6 +37,7 @@ Plugin 'airblade/vim-gitgutter.git'
 Plugin 'xolox/vim-misc.git'
 Plugin 'tmux-plugins/vim-tmux.git'
 Plugin 'drmingdrmer/xptemplate.git'
+Plugin 'leafgarland/typescript-vim.git'
 
 " Keep last, end of plugins
 call vundle#end()
