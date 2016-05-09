@@ -1,9 +1,9 @@
 #!/bin/bash
 
 NOCONFIRM=${NOCONFIRM:-0}
-DEBIAN_DEPENDS=(zsh git-core build-essential vim curl python-pip tmux wget gettext-base)
-RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip tmux wget)
-ARCH_DEPENDS=(yaourt zsh python2-pep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux wget)
+DEBIAN_DEPENDS=(zsh git-core build-essential vim curl python-pip tmux wget gettext-base rsync)
+RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip tmux wget rsync)
+ARCH_DEPENDS=(yaourt zsh python2-pep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux wget rsync)
 
 function opt_oper() {
 	# Read question and shift arguments ($2 = $1)
@@ -108,7 +108,11 @@ function check_n_install_os_deps()
 
 function install_plugins() {
 	${ENV_DIR_PATH}/tmux/tpm/bin/install_plugins
-	vim +BundleInstall +qall
+
+	# First time for vimprocs.
+	vim "+call dein#install()" +qall
+	# Second time for the rest :)
+	vim "+call dein#install()" +qall
 }
 
 function config_git() {

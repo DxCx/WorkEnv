@@ -2,46 +2,50 @@
 set shellslash
 
 " first set runtimepath to this directory.
-let &runtimepath.=','.escape(expand('<sfile>:p:h'), '\,')
+let &runtimepath.=','.eval('$ENV_DIR_PATH') . '/vim/dein/repos/github.com/Shougo/dein.vim'
 
-" Setup Vundle
-exec 'set rtp+=' . expand('${ENV_DIR_PATH}/vim/bundle/Vundle.vim')
-call vundle#begin(eval('$ENV_DIR_PATH') . '/vim/bundle')
-
-" Plugins
-Plugin 'VundleVim/Vundle.vim'
+" Setup dein for Plugins
+set nocompatible
+call dein#begin(eval('$ENV_DIR_PATH') . '/vim/dein')
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+if !empty(glob(eval('$ENV_DIR_PATH') . '/vim/dein/repos/github.com/Shougo/vimproc.vim'))
 " --------------------------------------
 
-Plugin 'vim-scripts/DirDiff.vim.git'
-Plugin 'bling/vim-airline.git'
-Plugin 'kien/ctrlp.vim.git'
-Plugin 'derekwyatt/vim-fswitch.git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'sjl/gundo.vim'
-Plugin 'wikitopian/hardmode.git'
-Plugin 'othree/html5-syntax.vim'
-Plugin 'davidhalter/jedi-vim.git'
-Plugin 'scrooloose/nerdcommenter.git'
-Plugin 'scrooloose/nerdtree'
-Plugin 'amix/open_file_under_cursor.vim.git'
-Plugin 'derekwyatt/vim-protodef'
-Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'bingaman/vim-sparkup.git'
-Plugin 'scrooloose/syntastic.git'
-Plugin 'godlygeek/tabular'
-Plugin 'tmux-plugins/vim-tmux-focus-events.git'
-Plugin 'sophacles/vim-bundle-mako.git'
-Plugin 'kchmck/vim-coffee-script.git'
-Plugin 'Lokaltog/vim-easymotion.git'
-Plugin 'airblade/vim-gitgutter.git'
-Plugin 'xolox/vim-misc.git'
-Plugin 'tmux-plugins/vim-tmux.git'
-Plugin 'drmingdrmer/xptemplate.git'
-Plugin 'leafgarland/typescript-vim.git'
+call dein#add('vim-scripts/DirDiff.vim.git')
+call dein#add('bling/vim-airline.git')
+call dein#add('kien/ctrlp.vim.git')
+call dein#add('derekwyatt/vim-fswitch.git')
+call dein#add('tpope/vim-fugitive')
+call dein#add('sjl/gundo.vim')
+call dein#add('wikitopian/hardmode.git')
+call dein#add('scrooloose/nerdcommenter.git')
+call dein#add('scrooloose/nerdtree')
+call dein#add('amix/open_file_under_cursor.vim.git')
+call dein#add('derekwyatt/vim-protodef')
+call dein#add('altercation/vim-colors-solarized.git')
+call dein#add('bingaman/vim-sparkup.git')
+call dein#add('scrooloose/syntastic.git')
+call dein#add('godlygeek/tabular')
+call dein#add('tmux-plugins/vim-tmux-focus-events.git')
+call dein#add('sophacles/vim-bundle-mako.git')
+call dein#add('Lokaltog/vim-easymotion.git')
+call dein#add('airblade/vim-gitgutter.git')
+call dein#add('xolox/vim-misc.git')
+call dein#add('drmingdrmer/xptemplate.git')
 
-" Keep last, end of plugins
-call vundle#end()
+" File types plugins
+call dein#add('leafgarland/typescript-vim.git', { 'on_ft': 'ts' })
+call dein#add('kchmck/vim-coffee-script.git', { 'on_ft': 'coffee' })
+call dein#add('othree/html5-syntax.vim', { 'on_ft': 'html' })
+call dein#add('davidhalter/jedi-vim.git', { 'on_ft': 'py' })
+
+" Test it later
+call dein#add('Shougo/neocomplete.vim')
+
 " --------------------------------------
+endif
+call dein#end()
 
 " set filetype stuff on
 filetype on

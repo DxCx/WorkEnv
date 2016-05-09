@@ -7,6 +7,6 @@
 [submodule "tmux/tmux-powerline"]
 	path = tmux/tmux-powerline
 	url = https://github.com/DxCx/tmux-powerline.git
-[submodule "vim/bundle/Vundle"]
-	path = vim/bundle/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "vim/dein/repos/github.com/Shougo/dein.vim"]
+	path = vim/dein/repos/github.com/Shougo/dein.vim
+	url = https://github.com/Shougo/dein.vim
