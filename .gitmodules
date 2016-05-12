@@ -10,7 +10,3 @@
 	path = tmux/tmux-powerline
 	url = https://github.com/erikw/tmux-powerline.git
 	branch = master
-[submodule "vim/dein/repos/github.com/Shougo/dein.vim"]
-	path = vim/dein/repos/github.com/Shougo/dein.vim
-	url = https://github.com/Shougo/dein.vim
-	branch = master

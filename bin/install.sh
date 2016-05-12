@@ -150,6 +150,9 @@ function load_enviroment() {
 	source ~/.zshrc
 	# Enable zshrc config loading
 	echo source \${ENV_DIR_PATH}/terminal/zshrc >> ~/.zshrc
+
+	# Download Dein for vim plugin managment
+	git clone https://github.com/Shougo/dein.vim vim/dein/repos/github.com/Shougo/dein.vim
 }
 
 function install_xfce4_theme() {
