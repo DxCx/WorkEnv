@@ -86,6 +86,7 @@ set nolist
 set wrapscan
 set ignorecase
 set smartcase
+set backspace=indent,eol,start
 
 " add $ at the end of replace instead of just delete it.
 set cpoptions=ces$
