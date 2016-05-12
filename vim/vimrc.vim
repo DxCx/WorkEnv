@@ -34,6 +34,7 @@ call dein#add('vim-scripts/DirDiff.vim.git')
 call dein#add('sjl/gundo.vim')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('fidian/hexmode')
+call dein#add('scrooloose/nerdtree')
 
 " Git support
 call dein#add('tmux-plugins/vim-tmux-focus-events.git')
@@ -53,12 +54,7 @@ call dein#add('davidhalter/jedi-vim.git', { 'on_ft': 'py' })
 " call dein#add('drmingdrmer/xptemplate.git')
 " call dein#add('scrooloose/syntastic.git')
 " call dein#add('godlygeek/tabular')
-" call dein#add('derekwyatt/vim-protodef')
-" call dein#add('derekwyatt/vim-fswitch.git')
-" call dein#add('scrooloose/nerdcommenter.git')
-" call dein#add('scrooloose/nerdtree')
 " call dein#add('bingaman/vim-sparkup.git')
-" call dein#add('sophacles/vim-bundle-mako.git')
 
 " --------------------------------------
 endif
@@ -200,6 +196,9 @@ nmap <silent> <leader><space> mzgg=G`z<CR>:w<CR>:%s/\\s\\+$//g<CR>:w<CR>
 " Unite
 nnoremap <silent> <C-p> :Unite -auto-resize -start-insert file file_mru file_rec/async<CR>
 nnoremap <C-g> :Unite -auto-preview grep:.<cr>
+
+" NERDTree
+map  <silent> <F2> :NERDTreeToggle<CR>
 
 " EasyMotion
 let g:EasyMotion_do_mapping=0

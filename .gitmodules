@@ -1,12 +1,16 @@
 [submodule "terminal/oh-my-zsh"]
 	path = terminal/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh
+	branch = master
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = https://github.com/DxCx/tpm
+	branch = master
 [submodule "tmux/tmux-powerline"]
 	path = tmux/tmux-powerline
-	url = https://github.com/DxCx/tmux-powerline.git
+	url = https://github.com/erikw/tmux-powerline.git
+	branch = master
 [submodule "vim/dein/repos/github.com/Shougo/dein.vim"]
 	path = vim/dein/repos/github.com/Shougo/dein.vim
 	url = https://github.com/Shougo/dein.vim
+	branch = master
