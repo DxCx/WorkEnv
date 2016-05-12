@@ -115,7 +115,7 @@ set spelllang=en_us
 " Themes/Visual
 " Color Scheme Solarized Dark
 let g:solarized_termcolors=256
-if dein#is_sourced('colors-solarized')
+if dein#is_sourced('vim-colors-solarized')
 colorscheme solarized
 set background=dark
 endif
