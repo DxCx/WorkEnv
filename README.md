@@ -33,13 +33,13 @@ Easy Install script attached, To skip the installation prompts (Assumes all yes)
 #### via curl
 
 ```shell
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/DxCx/WorkEnv/master/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/DxCx/WorkEnv/master/bin/install.sh)"
 ```
 
 #### via wget
 
 ```shell
-bash -c "$(wget https://raw.githubusercontent.com/DxCx/WorkEnv/master/install.sh -O -)"
+bash -c "$(wget https://raw.githubusercontent.com/DxCx/WorkEnv/master/bin/install.sh -O -)"
 ```
 
 Powerline fonts (System Wide):
