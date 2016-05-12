@@ -1,9 +1,9 @@
 #!/bin/bash
 
 NOCONFIRM=${NOCONFIRM:-0}
-DEBIAN_DEPENDS=(zsh git-core build-essential vim curl python-pip tmux wget gettext-base rsync)
+DEBIAN_DEPENDS=(zsh git-core build-essential vim curl python-pip tmux wget gettext-base rsync silversearcher-ag)
 RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip tmux wget rsync)
-ARCH_DEPENDS=(yaourt zsh python2-pep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux wget rsync)
+ARCH_DEPENDS=(yaourt zsh python2-pep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux wget rsync the_silver_searcher)
 
 function opt_oper() {
 	# Read question and shift arguments ($2 = $1)

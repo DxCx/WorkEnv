@@ -17,6 +17,9 @@ if !empty(glob(eval('$ENV_DIR_PATH') . '/vim/dein/repos/github.com/Shougo/vimpro
 
 " Shougo packages
 call dein#add('Shougo/vimshell.vim')
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/neoinclude.vim')
 call dein#add('Shougo/neocomplete.vim')
 
 " Themes
@@ -38,7 +41,6 @@ call dein#add('tpope/vim-fugitive')
 call dein#add('airblade/vim-gitgutter.git')
 
 " File Nevigation
-call dein#add('kien/ctrlp.vim.git')
 call dein#add('amix/open_file_under_cursor.vim.git')
 
 " File types plugins
@@ -124,6 +126,21 @@ set nu
 set relativenumber
 
 " ----------------------- Plugins Configuration ------------------------------
+" Unite
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+let g:unite_enable_start_insert=0
+let g:unite_source_history_yank_enable=1
+let g:unite_prompt='» '
+let g:unite_split_rule = 'botright'
+if executable('ag')
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts =
+\ '-i --vimgrep --hidden --ignore ' .
+\ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+let g:unite_source_grep_recursive_opt = ''
+endif
+
 " Fugitive's Autocmd to clean uneeded buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
@@ -173,14 +190,15 @@ let mapleader=","
 nmap <silent> <leader>s :set spell!<CR>
 
 " Move between buffers
-nmap <silent> <C-l> :bnext<CR>
-nmap <silent> <C-h> :bprevious<CR>
+" nmap <silent> <C-l> :bnext<CR>
+" nmap <silent> <C-h> :bprevious<CR>
 
 " remove Trailing spaces on ,<space>
 nmap <silent> <leader><space> mzgg=G`z<CR>:w<CR>:%s/\\s\\+$//g<CR>:w<CR>
 
-" CtrlP
-nmap <silent> <leader>f :CtrlP<CR>
+" Unite
+nnoremap <silent> <C-p> :Unite -auto-resize -start-insert file file_mru file_rec/async<CR>
+nnoremap <C-g> :Unite -auto-preview grep:.<cr>
 
 " EasyMotion
 let g:EasyMotion_do_mapping=0
@@ -215,7 +233,9 @@ endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-h> neocomplete#smart_close_popup()
+" TODO: There is bug, need to fix.
+"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
 " ----------------------- File types settings -------------------------
 " C/C++
