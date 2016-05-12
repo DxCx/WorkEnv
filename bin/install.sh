@@ -108,10 +108,6 @@ function check_n_install_os_deps()
 
 function install_plugins() {
 	${ENV_DIR_PATH}/tmux/tpm/bin/install_plugins
-
-	# First time for vimprocs.
-	vim "+call dein#install()" +qall
-	# Second time for the rest :)
 	vim "+call dein#install()" +qall
 }
 

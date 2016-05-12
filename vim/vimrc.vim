@@ -12,7 +12,12 @@ let &runtimepath.=','.eval('$ENV_DIR_PATH') . '/vim/dein/repos/github.com/Shougo
 call dein#begin(eval('$ENV_DIR_PATH') . '/vim/dein')
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-if !empty(glob(eval('$ENV_DIR_PATH') . '/vim/dein/repos/github.com/Shougo/vimproc.vim'))
+
+" Make sure vimproc will be installed first
+if dein#check_install(['vimproc.vim'])
+	call dein#install()
+endif
+
 " --------------------------------------
 
 " Shougo packages
@@ -57,7 +62,6 @@ call dein#add('davidhalter/jedi-vim.git', { 'on_ft': 'py' })
 " call dein#add('bingaman/vim-sparkup.git')
 
 " --------------------------------------
-endif
 call dein#end()
 
 " ----------------------- General VIM Configuration ----------------------------
@@ -111,12 +115,10 @@ set spelllang=en_us
 " Themes/Visual
 " Color Scheme Solarized Dark
 let g:solarized_termcolors=256
-try
-    colorscheme solarized
-    set background=dark
-catch /^Vim\%((\a\+)\)\=:E185/
-	silent !echo "Solorized theme is not installed yet"
-endtry
+if dein#is_sourced('colors-solarized')
+colorscheme solarized
+set background=dark
+endif
 " Show Line numbers
 set nu
 " Enable relative number to the line
@@ -124,6 +126,7 @@ set relativenumber
 
 " ----------------------- Plugins Configuration ------------------------------
 " Unite
+if dein#is_sourced('unite')
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 let g:unite_enable_start_insert=0
@@ -136,6 +139,7 @@ let g:unite_source_grep_default_opts =
 \ '-i --vimgrep --hidden --ignore ' .
 \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
 let g:unite_source_grep_recursive_opt = ''
+endif
 endif
 
 " Fugitive's Autocmd to clean uneeded buffers
