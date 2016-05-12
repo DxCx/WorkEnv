@@ -50,10 +50,11 @@ call dein#add('airblade/vim-gitgutter.git')
 call dein#add('amix/open_file_under_cursor.vim.git')
 
 " File types plugins
-call dein#add('leafgarland/typescript-vim.git', { 'on_ft': 'ts' })
+call dein#add('leafgarland/typescript-vim.git', { 'on_ft': 'typescript' })
+call dein#add('Quramy/tsuquyomi', { 'on_ft': 'typescript' })
 call dein#add('kchmck/vim-coffee-script.git', { 'on_ft': 'coffee' })
 call dein#add('othree/html5-syntax.vim', { 'on_ft': 'html' })
-call dein#add('davidhalter/jedi-vim.git', { 'on_ft': 'py' })
+call dein#add('davidhalter/jedi-vim.git', { 'on_ft': 'python' })
 
 " Junkyard - Old Plugins to cleanup
 " call dein#add('drmingdrmer/xptemplate.git')
@@ -242,10 +243,11 @@ inoremap <expr><C-h> neocomplete#smart_close_popup()
 "inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
 " ----------------------- File types settings -------------------------
-" C/C++
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
+
+" C/C++
 let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
@@ -264,6 +266,9 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 
 " Javascript
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
+" Typescript
+let g:neocomplete#sources#omni#input_patterns.typescript = '[^. *\t]\.\w*\|\h\w*::'
 
 " XML
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
