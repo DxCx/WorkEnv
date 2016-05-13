@@ -50,6 +50,8 @@ call dein#add('airblade/vim-gitgutter.git')
 call dein#add('amix/open_file_under_cursor.vim.git')
 
 " File types plugins
+call dein#add('scrooloose/syntastic.git')
+call dein#add('mhartington/vim-typings', { 'on_ft': 'typescript' })
 call dein#add('leafgarland/typescript-vim.git', { 'on_ft': 'typescript' })
 call dein#add('Quramy/tsuquyomi', { 'on_ft': 'typescript' })
 call dein#add('kchmck/vim-coffee-script.git', { 'on_ft': 'coffee' })
@@ -58,7 +60,6 @@ call dein#add('davidhalter/jedi-vim.git', { 'on_ft': 'python' })
 
 " Junkyard - Old Plugins to cleanup
 " call dein#add('drmingdrmer/xptemplate.git')
-" call dein#add('scrooloose/syntastic.git')
 " call dein#add('godlygeek/tabular')
 " call dein#add('bingaman/vim-sparkup.git')
 
@@ -191,16 +192,12 @@ let mapleader=","
 " Spellchecker toggler
 nmap <silent> <leader>s :set spell!<CR>
 
-" Move between buffers
-" nmap <silent> <C-l> :bnext<CR>
-" nmap <silent> <C-h> :bprevious<CR>
-
 " remove Trailing spaces on ,<space>
 nmap <silent> <leader><space> mzgg=G`z<CR>:w<CR>:%s/\\s\\+$//g<CR>:w<CR>
 
 " Unite
 nnoremap <silent> <C-p> :Unite -auto-resize -start-insert file file_mru file_rec/async<CR>
-nnoremap <C-g> :Unite -auto-preview grep:.<cr>
+nnoremap <silent> <C-g> :Unite -auto-preview grep:.<cr>
 
 " NERDTree
 map  <silent> <F2> :NERDTreeToggle<CR>
@@ -228,19 +225,18 @@ map <silent> - :set relativenumber!<CR>
 noremap <F8> :call Hexmode()<CR>
 
 " NeoComplete
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
+inoremap <expr> <C-g>     neocomplete#undo_completion()
+inoremap <expr> <C-l>     neocomplete#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
   return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()
-" TODO: There is bug, need to fix.
-"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr> <C-h> neocomplete#smart_close_popup()
+inoremap <expr> <BS> neocomplete#smart_close_popup()."\<C-h>"
 
 " ----------------------- File types settings -------------------------
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -269,6 +265,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 " Typescript
 let g:neocomplete#sources#omni#input_patterns.typescript = '[^. *\t]\.\w*\|\h\w*::'
+autocmd FileType typescript nnoremap <silent> <leader>t :Unite -auto-resize -start-insert typings<cr>
 
 " XML
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
