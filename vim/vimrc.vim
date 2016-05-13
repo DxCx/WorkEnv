@@ -90,9 +90,6 @@ set ignorecase
 set smartcase
 set backspace=indent,eol,start
 
-" add $ at the end of replace instead of just delete it.
-set cpoptions=ces$
-
 " Search options (search as you type + highlight)
 set hlsearch
 set incsearch
