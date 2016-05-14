@@ -57,6 +57,7 @@ call dein#add('Quramy/tsuquyomi', { 'on_ft': 'typescript' })
 call dein#add('kchmck/vim-coffee-script.git', { 'on_ft': 'coffee' })
 call dein#add('othree/html5-syntax.vim', { 'on_ft': 'html' })
 call dein#add('davidhalter/jedi-vim.git', { 'on_ft': 'python' })
+call dein#add('vim-scripts/indentpython.vim', { 'on_ft': 'python' })
 
 " Junkyard - Old Plugins to cleanup
 " call dein#add('drmingdrmer/xptemplate.git')
@@ -75,6 +76,7 @@ filetype plugin indent on
 syntax enable
 " Ident settings
 filetype indent on
+set encoding=utf-8
 set tabstop=4
 set shiftwidth=4
 set autoindent  " always auto indent
@@ -245,8 +247,21 @@ let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " Python
-autocmd FileType python set expandtab   " Use spaces and not real tabs
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+let g:syntastic_python_checkers = ['pep8', 'pylint', 'python']
+autocmd FileType python " PEP8
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_on_dot = 0
+let g:pymode_rope = 0
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:neocomplete#sources#omni#input_patterns.python =
+    \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
 " CoffeeScript
 autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
@@ -262,7 +277,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 " Typescript
 let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+let g:syntastic_typescript_checkers = ['tsuquyomi'] " replaces 'tsc' checker.
 let g:neocomplete#sources#omni#input_patterns.typescript = '[^. *\t]\.\w*\|\h\w*::'
 autocmd FileType typescript nnoremap <silent> <leader>t :Unite -auto-resize -start-insert typings<cr>
 
