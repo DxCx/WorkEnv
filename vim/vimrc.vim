@@ -40,6 +40,7 @@ call dein#add('sjl/gundo.vim')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('fidian/hexmode')
 call dein#add('scrooloose/nerdtree')
+call dein#add('Xuyuanp/nerdtree-git-plugin')
 
 " Git support
 call dein#add('tmux-plugins/vim-tmux-focus-events.git')
