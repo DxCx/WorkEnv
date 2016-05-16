@@ -26,6 +26,8 @@ call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neoinclude.vim')
 call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
 
 " Themes
 call dein#add('bling/vim-airline.git')
@@ -232,11 +234,17 @@ inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
   return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
+
 " <TAB>: completion.
 inoremap <expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr> <C-h> neocomplete#smart_close_popup()
 inoremap <expr> <BS> neocomplete#smart_close_popup()."\<C-h>"
+
+" NeoSnippet Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " ----------------------- File types settings -------------------------
 if !exists('g:neocomplete#sources#omni#input_patterns')
