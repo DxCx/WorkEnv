@@ -41,6 +41,7 @@
       </property>
       <property name="&lt;Alt&gt;F1" type="string" value="xfce4-appfinder"/>
       <property name="&lt;Primary&gt;grave" type="string" value="thunar"/>
+      <property name="Print" type="string" value="xfce4-screenshooter"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
