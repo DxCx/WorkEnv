@@ -184,7 +184,7 @@ function install_i3_config() {
 	rm -Rf ~/.i3
 	ln -s ${ENV_DIR_PATH}/i3/.i3 ~/.i3
 	rm -f ~/.Xresources
-	ln -s ${ENV_DIR_PATH}/.Xresources ~/.Xresources
+	ln -s ${ENV_DIR_PATH}/i3/.Xresources ~/.Xresources
 
 	yaourt -S google-chrome telegram-desktop-bin morc_menu --noconfirm
 }
