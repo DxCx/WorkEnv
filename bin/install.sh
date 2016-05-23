@@ -165,7 +165,9 @@ function install_powerline_fonts() {
 	pushd ~
 	wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf
 	wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
-	mkdir -p ~/.fonts/ && mv PowerlineSymbols.otf ~/.fonts/
+	wget https://raw.githubusercontent.com/powerline/fonts/master/Inconsolata/Inconsolata%20for%20Powerline.otf
+
+	mkdir -p ~/.fonts/ && mv *.otf ~/.fonts/
 	fc-cache -vf ~/.fonts
 	mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 	popd
@@ -175,6 +177,16 @@ function install_xfce_shortcuts() {
 	# TODO: backup instead of remove
 	rm -f ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 	ln -s ${ENV_DIR_PATH}/xfce/xfce4-keyboard-shortcuts.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+}
+
+function install_i3_config() {
+	# TODO: backup instead of remove
+	rm -Rf ~/.i3
+	ln -s ${ENV_DIR_PATH}/i3/.i3 ~/.i3
+	rm -f ~/.Xresources
+	ln -s ${ENV_DIR_PATH}/.Xresources ~/.Xresources
+
+	yaourt -S google-chrome telegram-desktop-bin morc_menu --noconfirm
 }
 
 # Install operation system dependancies
@@ -198,6 +210,8 @@ opt_oper "Download and install XFCE4 terminal theme" false install_xfce4_theme
 
 # Update keyboard shortcuts
 opt_oper "Do you want to replace XFCE4 keyboard shortcuts" false install_xfce_shortcuts
+
+opt_oper "Do you want to install I3 config" false install_i3_config
 
 # Change zsh to default shell (Keep last)
 opt_oper "Use ZSH as default shell" true set_default_zsh
