@@ -46,7 +46,6 @@ call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('derekprior/vim-trimmer')
 call dein#add('vim-scripts/ZoomWin')
 
-
 " Git support
 call dein#add('tmux-plugins/vim-tmux-focus-events.git')
 call dein#add('tpope/vim-fugitive')
@@ -122,10 +121,12 @@ set spelllang=en_us
 " Themes/Visual
 " Color Scheme Solarized Dark
 let g:solarized_termcolors=256
-if dein#is_sourced('vim-colors-solarized')
+try
 colorscheme solarized
 set background=dark
-endif
+catch /^Vim\%((\a\+)\)\=:E185/
+	silent !echo "Solorized theme is not installed yet"
+endtry
 " Show Line numbers
 set nu
 " Enable relative number to the line
