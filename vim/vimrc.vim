@@ -43,6 +43,9 @@ call dein#add('easymotion/vim-easymotion')
 call dein#add('fidian/hexmode')
 call dein#add('scrooloose/nerdtree')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
+call dein#add('derekprior/vim-trimmer')
+call dein#add('vim-scripts/ZoomWin')
+
 
 " Git support
 call dein#add('tmux-plugins/vim-tmux-focus-events.git')
@@ -186,6 +189,9 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 let g:hardtime_default_on = 1
 let g:hardtime_showmsg = 1
 let g:hardtime_maxcount = 2
+
+" Trimmer BL
+let g:trimmer_blacklist = ['markdown', 'make']
 
 " -------------------------- Key Bindings -----------------------------
 " I Want leader key to be , and not \
