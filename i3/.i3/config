@@ -282,6 +282,9 @@ exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 10 -locker blurlock
 
+# Enable dual screen support.
+exec_always --no-startup-id xrandr --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output eDP1 --mode 1920x1080 --pos 1920x0 --rotate normal --output VIRTUAL1 --off
+
 # Workspaces autostart
 # TODO: Debug and fix
 # exec --no-startup-id terminal -e "bash -c \"tmux -q has-session && tmux attach -d || tmux\""  # For ws1
