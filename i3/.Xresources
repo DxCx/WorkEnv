@@ -73,6 +73,7 @@ XTerm*selectToClipboard: true
 URxvt.font: 9x15
 URxvt.font: xft:Terminus:size=13, xft:Inconsolata for Powerline
 URxvt.depth: 32
+URxvt.perl-ext-common: selection-to-clipboard
 URxvt*scrollBar:                      false
 URxvt*mouseWheelScrollPage:           false
 URxvt*cursorBlink:                    true
