@@ -295,8 +295,8 @@ exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 10 -locker blurlock
 
-# Enable dual screen support.
-exec_always --no-startup-id xrandr --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output eDP1 --mode 1920x1080 --pos 1920x0 --rotate normal --output VIRTUAL1 --off
+# Enable single screen support.
+exec_always --no-startup-id xrandr --output HDMI1 --off --output DP1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
 
 # Workspaces autostart
 # TODO: Debug and fix
@@ -401,3 +401,13 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+set $mode_screen Screen Mode: (d) Dual, (s) Single
+mode "$mode_screen" {
+	bindsym s exec --no-startup-id xrandr --output HDMI1 --off --output DP1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off, mode "default"
+	bindsym d exec --no-startup-id xrandr --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output eDP1 --mode 1920x1080 --pos 1920x0 --rotate normal --output VIRTUAL1 --off, mode "default"
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+ctrl+s mode "$mode_screen"
