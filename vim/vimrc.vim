@@ -61,6 +61,8 @@ call dein#add('leafgarland/typescript-vim.git', { 'on_ft': 'typescript' })
 call dein#add('Quramy/tsuquyomi', { 'on_ft': 'typescript' })
 call dein#add('Quramy/vim-js-pretty-template', { 'on_ft': 'typescript' })
 call dein#add('jason0x43/vim-js-indent', { 'on_ft': 'typescript' })
+call dein#add('pangloss/vim-javascript', { 'on_ft': 'typescript' })
+call dein#add('mxw/vim-jsx', { 'on_ft': 'typescript' })
 call dein#add('mhartington/vim-typings', { 'on_ft': 'typescript' })
 call dein#add('kchmck/vim-coffee-script.git', { 'on_ft': 'coffee' })
 call dein#add('othree/html5-syntax.vim', { 'on_ft': 'html' })
@@ -84,6 +86,7 @@ filetype plugin indent on
 syntax enable
 " Ident settings
 filetype indent on
+set noexpandtab
 set encoding=utf-8
 set tabstop=4
 set shiftwidth=4
@@ -267,14 +270,14 @@ let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\
 
 " Python
 let g:syntastic_python_checkers = ['pep8', 'pylint', 'python']
-autocmd FileType python " PEP8
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+" PEP8
+autocmd FileType python setl tabstop=4
+    \ softtabstop=4
+    \ shiftwidth=4
+    \ textwidth=79
+    \ expandtab
+    \ autoindent
+    \ fileformat=unix
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_on_dot = 0
 let g:pymode_rope = 0
@@ -296,9 +299,15 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 " Typescript
 let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi'] " replaces 'tsc' checker.
+let g:syntastic_typescript_checkers = ['tslint', 'tsuquyomi'] " replaces 'tsc' checker.
 let g:neocomplete#sources#omni#input_patterns.typescript = '[^. *\t]\.\w*\|\h\w*::'
 autocmd FileType typescript nnoremap <silent> <leader>t :Unite -auto-resize -start-insert typings<cr>
+autocmd FileType typescript setl tabstop=4
+    \ softtabstop=4
+    \ shiftwidth=4
+    \ expandtab
+    \ autoindent
+    \ fileformat=unix
 
 " XML
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
