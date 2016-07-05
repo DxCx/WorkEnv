@@ -299,7 +299,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 " Typescript
 let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tslint', 'tsuquyomi'] " replaces 'tsc' checker.
+let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint'] " replaces 'tsc' checker.
 let g:neocomplete#sources#omni#input_patterns.typescript = '[^. *\t]\.\w*\|\h\w*::'
 autocmd FileType typescript nnoremap <silent> <leader>t :Unite -auto-resize -start-insert typings<cr>
 autocmd FileType typescript setl tabstop=4
