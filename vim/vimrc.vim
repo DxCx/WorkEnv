@@ -23,6 +23,7 @@ endif
 " Shougo packages
 call dein#add('Shougo/vimshell.vim')
 call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/unite-outline.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neoinclude.vim')
 call dein#add('Shougo/neocomplete.vim')
