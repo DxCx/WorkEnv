@@ -7,6 +7,7 @@ set nocompatible
 
 " first set runtimepath to this directory.
 let &runtimepath.=','.eval('$ENV_DIR_PATH') . '/vim/dein/repos/github.com/Shougo/dein.vim'
+let plugins_dir=eval('$ENV_DIR_PATH') . '/vim/dein/repos/github.com'
 
 " Setup dein for Plugins
 call dein#begin(eval('$ENV_DIR_PATH') . '/vim/dein')
@@ -69,6 +70,10 @@ call dein#add('kchmck/vim-coffee-script.git', { 'on_ft': 'coffee' })
 call dein#add('othree/html5-syntax.vim', { 'on_ft': 'html' })
 call dein#add('davidhalter/jedi-vim.git', { 'on_ft': 'python' })
 call dein#add('vim-scripts/indentpython.vim', { 'on_ft': 'python' })
+
+" Snippets
+call dein#add('honza/vim-snippets')
+call dein#add('alessioalex/vim-angular2-snippets')
 
 " Junkyard - Old Plugins to cleanup
 " call dein#add('drmingdrmer/xptemplate.git')
@@ -259,6 +264,8 @@ inoremap <expr> <BS> neocomplete#smart_close_popup()."\<C-h>"
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+let g:neosnippet#snippets_directory=plugins_dir . "honza/vim-snippets"
+let g:neosnippet#enable_snipmate_compatibility = 1
 
 " ----------------------- File types settings -------------------------
 if !exists('g:neocomplete#sources#omni#input_patterns')
