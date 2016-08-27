@@ -70,6 +70,7 @@ call dein#add('kchmck/vim-coffee-script.git', { 'on_ft': 'coffee' })
 call dein#add('othree/html5-syntax.vim', { 'on_ft': 'html' })
 call dein#add('davidhalter/jedi-vim.git', { 'on_ft': 'python' })
 call dein#add('vim-scripts/indentpython.vim', { 'on_ft': 'python' })
+call dein#add('jparise/vim-graphql', { 'on_ft': 'graphql' })
 
 " Snippets
 call dein#add('honza/vim-snippets')

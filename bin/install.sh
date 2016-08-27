@@ -116,6 +116,8 @@ function config_git() {
 	git config --global merge.tool "vimdiff"
 	git config --global color.ui auto
 	git config --global branch.autosetuprebase always
+	git config --global log.decorate true
+	git config --global log.date relative
 }
 
 function set_default_zsh() {
