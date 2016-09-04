@@ -118,13 +118,16 @@ function load_enviroment() {
 	chmod +x ./setup.py
 	sudo ./setup.py install
 
-	cd ..
+	cd ../..
 }
 
 function ansible_kickstart() {
-	cd playbook
+	git clone --recursive https://github.com/DxCx/dotfiles-playbook .dotfiles
+	cd .dotfiles
 
-	cd ~
+	# TODO: Ansible kick start command
+
+	cd ..
 }
 
 function cleanup() {
@@ -137,8 +140,8 @@ check_n_install_os_deps
 # Loading initial enviorment
 load_enviroment
 
-# Ansible will take us from here... :)
-ansible_kickstart
-
 # cleanup installer
 cleanup
+
+# Ansible will take us from here... :)
+ansible_kickstart
