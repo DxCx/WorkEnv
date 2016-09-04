@@ -111,10 +111,10 @@ function load_enviroment() {
 	# cd ~
 
 	# Clone the repository
-	git clone --recursive https://github.com/DxCx/WorkEnv -b ansible .dxcx_workenv
+	git clone --recursive https://github.com/DxCx/WorkEnv -b ansible .workenv_installer
 
 	# Install Ansible
-	cd .dxcx_workenv/ansible
+	cd .workenv_installer/ansible
 	chmod +x ./setup.py
 	sudo ./setup.py install
 
@@ -127,6 +127,10 @@ function ansible_kickstart() {
 	cd ~
 }
 
+function cleanup() {
+	rm -Rf .workenv_installer/
+}
+
 # Install operation system dependancies
 check_n_install_os_deps
 
@@ -135,3 +139,6 @@ load_enviroment
 
 # Ansible will take us from here... :)
 ansible_kickstart
+
+# cleanup installer
+cleanup
