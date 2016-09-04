@@ -3,7 +3,7 @@
 NOCONFIRM=${NOCONFIRM:-0}
 DEBIAN_DEPENDS=(git-core python-pip python-setuptools)
 RH_DEPENDS=(git-all python-pip python-setuptools)
-ARCH_DEPENDS=(yaourt git python-pip python-setuptools)
+ARCH_DEPENDS=(yaourt git python2-pip python2-setuptools)
 
 function opt_oper() {
 	# Read question and shift arguments ($2 = $1)
