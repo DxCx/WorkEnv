@@ -124,9 +124,7 @@ function load_enviroment() {
 function ansible_kickstart() {
 	git clone --recursive https://github.com/DxCx/dotfiles-playbook .dotfiles
 	cd .dotfiles
-
-	# TODO: Ansible kick start command
-
+	./install.sh
 	cd ..
 }
 
