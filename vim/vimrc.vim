@@ -24,7 +24,7 @@ endif
 " Shougo packages
 call dein#add('Shougo/vimshell.vim')
 call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/unite-outline.vim')
+call dein#add('h1mesuke/unite-outline')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neoinclude.vim')
 call dein#add('Shougo/neocomplete.vim')
@@ -71,6 +71,8 @@ call dein#add('othree/html5-syntax.vim', { 'on_ft': 'html' })
 call dein#add('davidhalter/jedi-vim.git', { 'on_ft': 'python' })
 call dein#add('vim-scripts/indentpython.vim', { 'on_ft': 'python' })
 call dein#add('jparise/vim-graphql', { 'on_ft': 'graphql' })
+call dein#add('chase/vim-ansible-yaml', { 'on_ft': 'ansible' })
+call dein#add('stephpy/vim-yaml', { 'on_ft': 'yaml' })
 
 " Snippets
 call dein#add('honza/vim-snippets')
@@ -272,6 +274,9 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
+
+" Yaml
+let g:syntastic_yaml_checkers = ['jsyaml', 'yamllint', 'yamlxs']
 
 " C/C++
 let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
