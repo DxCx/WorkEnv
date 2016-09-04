@@ -131,7 +131,7 @@ function ansible_kickstart() {
 }
 
 function cleanup() {
-	rm -Rf .workenv_installer/
+	sudo rm -Rf .workenv_installer/
 }
 
 # Install operation system dependancies
