@@ -116,7 +116,7 @@ function load_enviroment() {
 	# Install Ansible
 	cd .workenv_installer/ansible
 	chmod +x ./setup.py
-	sudo ./setup.py install
+	sudo python2 ./setup.py install
 
 	cd ../..
 }
