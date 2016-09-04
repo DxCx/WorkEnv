@@ -1,9 +1,9 @@
 #!/bin/bash
 
 NOCONFIRM=${NOCONFIRM:-0}
-DEBIAN_DEPENDS=(zsh git-core build-essential vim curl python-pip tmux wget gettext-base rsync silversearcher-ag dmenu)
-RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip tmux wget rsync dmenu)
-ARCH_DEPENDS=(yaourt zsh python2-autopep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux wget rsync the_silver_searcher dmenu xorg-xkill)
+DEBIAN_DEPENDS=(git-core python-pip python-setuptools)
+RH_DEPENDS=(git-all python-pip python-setuptools)
+ARCH_DEPENDS=(yaourt git python-pip python-setuptools)
 
 function opt_oper() {
 	# Read question and shift arguments ($2 = $1)
@@ -106,89 +106,25 @@ function check_n_install_os_deps()
 	fi
 }
 
-function install_plugins() {
-	${ENV_DIR_PATH}/tmux/tpm/bin/install_plugins
-	vim "+call dein#install()" +qall
-}
-
-function config_git() {
-	git config --global core.editor "vim"
-	git config --global merge.tool "vimdiff"
-	git config --global color.ui auto
-	git config --global branch.autosetuprebase always
-	git config --global log.decorate true
-	git config --global log.date relative
-}
-
-function set_default_zsh() {
-	if [[ -x /bin/zsh ]]; then
-		chsh ${LOGNAME} -s /bin/zsh
-	else
-		echo "Zsh was not found on your system. (/bin/zsh)"
-	fi
-}
-
 function load_enviroment() {
-	cd ~
+	# TODO: Return CD, remove -b ansible
+	# cd ~
 
 	# Clone the repository
-	git clone --recursive https://github.com/DxCx/WorkEnv .dxcx_workenv
-	cd .dxcx_workenv
+	git clone --recursive https://github.com/DxCx/WorkEnv -b ansible .dxcx_workenv
 
-	# Build config for vim
-	echo source `pwd`/vim/vimrc.vim > ~/.vimrc
+	# Install Ansible
+	cd .dxcx_workenv/ansible
+	chmod +x ./setup.py
+	sudo ./setup.py install
 
-	# Build config for tmux
-	echo source-file \${ENV_DIR_PATH}/tmux/tmux.conf > ~/.tmux.conf
-
-	# Build config for zsh
-	echo export PATH=\"${PATH}\" > ~/.zshrc
-	echo export ENV_DIR_PATH=`pwd` >> ~/.zshrc
-	# Load ENV_DIR_PATH
-	source ~/.zshrc
-	# Enable zshrc config loading
-	echo source \${ENV_DIR_PATH}/terminal/zshrc >> ~/.zshrc
-
-	# Download Dein for vim plugin managment
-	git clone https://github.com/Shougo/dein.vim vim/dein/repos/github.com/Shougo/dein.vim
+	cd ..
 }
 
-function install_xfce4_theme() {
-	pushd ~
-	git clone https://github.com/sgerrand/xfce4-terminal-colors-solarized.git
-	pushd xfce4-terminal-colors-solarized
-	cp dark/terminalrc ~/.config/xfce4/terminal/terminalrc
-	popd
-	rm -Rf xfce4-terminal-colors-solarized
-	popd
-}
+function ansible_kickstart() {
+	cd playbook
 
-function install_powerline_fonts() {
-	pushd ~
-	wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf
-	wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
-	wget https://raw.githubusercontent.com/powerline/fonts/master/Inconsolata/Inconsolata%20for%20Powerline.otf
-
-	mkdir -p ~/.fonts/ && mv *.otf ~/.fonts/
-	fc-cache -vf ~/.fonts
-	mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
-	popd
-}
-
-function install_xfce_shortcuts() {
-	# TODO: backup instead of remove
-	rm -f ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
-	ln -s ${ENV_DIR_PATH}/xfce/xfce4-keyboard-shortcuts.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
-}
-
-function install_i3_config() {
-	# TODO: backup instead of remove
-	rm -Rf ~/.i3
-	ln -s ${ENV_DIR_PATH}/i3/.i3 ~/.i3
-	rm -f ~/.Xresources
-	ln -s ${ENV_DIR_PATH}/i3/.Xresources ~/.Xresources
-
-	yaourt -S google-chrome telegram-desktop-bin morc_menu --noconfirm
+	cd ~
 }
 
 # Install operation system dependancies
@@ -197,23 +133,5 @@ check_n_install_os_deps
 # Loading initial enviorment
 load_enviroment
 
-# Install plugins
-opt_oper "Download and install all plugins now" true install_plugins
-
-# Config git
-git config fetch.recurseSubmodules true
-opt_oper "Configure git" true config_git
-
-# Install powerline-fonts
-opt_oper "Install powerline fonts for local user" false install_powerline_fonts
-
-# Install terminal theme
-opt_oper "Download and install XFCE4 terminal theme" false install_xfce4_theme
-
-# Update keyboard shortcuts
-opt_oper "Do you want to replace XFCE4 keyboard shortcuts" false install_xfce_shortcuts
-
-opt_oper "Do you want to install I3 config" false install_i3_config
-
-# Change zsh to default shell (Keep last)
-opt_oper "Use ZSH as default shell" true set_default_zsh
+# Ansible will take us from here... :)
+ansible_kickstart
