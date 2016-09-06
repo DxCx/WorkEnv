@@ -189,7 +189,7 @@ function install_i3_config() {
 	ln -s ${ENV_DIR_PATH}/i3/.Xresources ~/.Xresources
 
 	# TODO: Make it proper, now it's arch only
-	yaourt -S google-chrome telegram-desktop-bin bmenu morc_menu xfce4-terminal i3-sensible-terminal --noconfirm
+	yaourt -S google-chrome telegram-desktop-bin nitrogen bmenu morc_menu xfce4-terminal i3-sensible-terminal lxappearance --noconfirm
 }
 
 function install_dmenu_config() {
