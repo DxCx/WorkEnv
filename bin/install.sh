@@ -188,7 +188,14 @@ function install_i3_config() {
 	rm -f ~/.Xresources
 	ln -s ${ENV_DIR_PATH}/i3/.Xresources ~/.Xresources
 
-	yaourt -S google-chrome telegram-desktop-bin morc_menu --noconfirm
+	# TODO: Make it proper, now it's arch only
+	yaourt -S google-chrome telegram-desktop-bin bmenu morc_menu xfce4-terminal i3-sensible-terminal --noconfirm
+}
+
+function install_dmenu_config() {
+	# TODO: backup instead of remove
+	rm -Rf ~/.dmenurc
+	ln -s ${ENV_DIR_PATH}/dmenu/.dmenurc ~/.dmenurc
 }
 
 # Install operation system dependancies
@@ -212,6 +219,8 @@ opt_oper "Download and install XFCE4 terminal theme" false install_xfce4_theme
 
 # Update keyboard shortcuts
 opt_oper "Do you want to replace XFCE4 keyboard shortcuts" false install_xfce_shortcuts
+
+opt_oper "Do you want to install dmenu config" false install_dmenu_config
 
 opt_oper "Do you want to install I3 config" false install_i3_config
 
