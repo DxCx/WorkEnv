@@ -196,6 +196,11 @@ function install_dmenu_config() {
 	# TODO: backup instead of remove
 	rm -Rf ~/.dmenurc
 	ln -s ${ENV_DIR_PATH}/dmenu/.dmenurc ~/.dmenurc
+
+	rm -Rf ~/.config/dmenu-extended
+	ln -s ${ENV_DIR_PATH}/dmenu-extended ~/.config/dmenu-extended
+
+	yaourt -S dmenu-extended --noconfirm
 }
 
 # Install operation system dependancies
