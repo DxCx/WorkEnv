@@ -16,6 +16,10 @@
         {
             "title": "Github",
             "url": "https://github.com/search?q={searchterm}"
+        },
+        {
+          "title": "NPM",
+          "url":  "https://www.npmjs.com/search?q={searchterm}"
         }
     ]
 }
