@@ -73,6 +73,7 @@ call dein#add('vim-scripts/indentpython.vim', { 'on_ft': 'python' })
 call dein#add('jparise/vim-graphql', { 'on_ft': 'graphql' })
 call dein#add('chase/vim-ansible-yaml', { 'on_ft': 'ansible' })
 call dein#add('stephpy/vim-yaml', { 'on_ft': 'yaml' })
+call dein#add('hail2u/vim-css3-syntax.git', { 'on_ft': 'css' })
 
 " Snippets
 call dein#add('honza/vim-snippets')
