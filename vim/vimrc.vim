@@ -311,15 +311,21 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 
 " Javascript
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript setlocal tabstop=2
+    \ softtabstop=2
+    \ shiftwidth=2
+    \ expandtab
+    \ autoindent
+    \ fileformat=unix
 
 " Typescript
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint'] " replaces 'tsc' checker.
 let g:neocomplete#sources#omni#input_patterns.typescript = '[^. *\t]\.\w*\|\h\w*::'
 autocmd FileType typescript nnoremap <silent> <leader>t :Unite -auto-resize -start-insert typings<cr>
-autocmd FileType typescript setl tabstop=4
-    \ softtabstop=4
-    \ shiftwidth=4
+autocmd FileType typescript setlocal tabstop=2
+    \ softtabstop=2
+    \ shiftwidth=2
     \ expandtab
     \ autoindent
     \ fileformat=unix
