@@ -2,8 +2,10 @@
 
 NOCONFIRM=${NOCONFIRM:-0}
 DEBIAN_DEPENDS=(zsh git-core build-essential vim curl python-pip tmux wget gettext-base rsync silversearcher-ag dmenu)
+BREW_DEPENDS=(zsh git vim curl tmux wget gettext rsync the_silver_searcher)
 RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip tmux wget rsync dmenu)
 ARCH_DEPENDS=(yaourt zsh python2-autopep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux wget rsync the_silver_searcher dmenu xorg-xkill)
+MAC_MODE=false
 
 function opt_oper() {
 	# Read question and shift arguments ($2 = $1)
@@ -56,6 +58,10 @@ function install_missing_os_deps()
 	# ArchLinux (with pacman)
 	elif which pacman &> /dev/null; then
 		sudo pacman --noconfirm -Sy $PKGSTOINSTALL
+	elif which brew &> /dev/null; then
+		brew tap homebrew/dupes	
+		brew install $PKGSTOINSTALL
+		brew link --force gettext
 	# Else, if no package manager has been founded
 	else
 		NOPKGMANAGER=true
@@ -88,6 +94,10 @@ function check_n_install_os_deps()
 	elif which pacman &> /dev/null; then
 		DEPENDENCIES=(${ARCH_DEPENDS[@]})
 		QCMD="pacman -Qq | grep \"\$i\" || pacman -Qqg | grep \"\$i\""
+	elif which brew &> /dev/null; then
+		MAC_MODE=true
+		DEPENDENCIES=(${BREW_DEPENDS[@]})
+		QCMD="brew list --versions \$i | grep \$i"
 	else
 		echo "ERROR: Couldn't find package manager"
 		opt_oper "Exit" true bail_error
@@ -122,7 +132,7 @@ function config_git() {
 
 function set_default_zsh() {
 	if [[ -x /bin/zsh ]]; then
-		chsh ${LOGNAME} -s /bin/zsh
+		chsh -s /bin/zsh
 	else
 		echo "Zsh was not found on your system. (/bin/zsh)"
 	fi
@@ -164,15 +174,22 @@ function install_xfce4_theme() {
 }
 
 function install_powerline_fonts() {
-	pushd ~
-	wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf
-	wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
-	wget https://raw.githubusercontent.com/powerline/fonts/master/Inconsolata/Inconsolata%20for%20Powerline.otf
+		pushd ~
+		wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf
+		wget https://raw.githubusercontent.com/powerline/fonts/master/Inconsolata/Inconsolata%20for%20Powerline.otf
 
-	mkdir -p ~/.fonts/ && mv *.otf ~/.fonts/
-	fc-cache -vf ~/.fonts
-	mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
-	popd
+	if [[ ${MAC_MODE} = false ]]; then
+		wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+		mkdir -p ~/.fonts/ && mv *.otf ~/.fonts/
+		fc-cache -vf ~/.fonts
+		mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+		popd
+	else
+		pushd ~
+		mv *.otf ~/Library/Fonts/
+		popd
+		rm -Rf ~/.fonts/
+	fi
 }
 
 function install_xfce_shortcuts() {
@@ -190,6 +207,13 @@ function install_i3_config() {
 
 	# TODO: Make it proper, now it's arch only
 	yaourt -S google-chrome telegram-desktop-bin nitrogen bmenu morc_menu xfce4-terminal i3-sensible-terminal lxappearance xfce4-clipman-plugin xfce4-power-manager --noconfirm
+}
+
+function install_iterm_config() {
+	# TODO: backup instead of remove
+	rm -Rf ~/Library/Preferences/com.googlecode.iterm2.plist
+	ln -s ${ENV_DIR_PATH}/terminal/iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
+	defaults read com.googlecode.iterm2
 }
 
 function install_dmenu_config() {
@@ -219,15 +243,19 @@ opt_oper "Configure git" true config_git
 # Install powerline-fonts
 opt_oper "Install powerline fonts for local user" false install_powerline_fonts
 
-# Install terminal theme
-opt_oper "Download and install XFCE4 terminal theme" false install_xfce4_theme
+if [[ ${MAC_MODE} = false ]]; then
+	# Install terminal theme
+	opt_oper "Download and install XFCE4 terminal theme" false install_xfce4_theme
 
-# Update keyboard shortcuts
-opt_oper "Do you want to replace XFCE4 keyboard shortcuts" false install_xfce_shortcuts
+	# Update keyboard shortcuts
+	opt_oper "Do you want to replace XFCE4 keyboard shortcuts" false install_xfce_shortcuts
 
-opt_oper "Do you want to install dmenu config" false install_dmenu_config
+	opt_oper "Do you want to install dmenu config" false install_dmenu_config
 
-opt_oper "Do you want to install I3 config" false install_i3_config
+	opt_oper "Do you want to install I3 config" false install_i3_config
+else
+	opt_oper "Do you want to install iterm config" false install_iterm_config
+fi
 
 # Change zsh to default shell (Keep last)
 opt_oper "Use ZSH as default shell" true set_default_zsh
