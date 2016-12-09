@@ -5,6 +5,7 @@ DEBIAN_DEPENDS=(zsh git-core build-essential vim curl python-pip tmux wget gette
 BREW_DEPENDS=(zsh git vim curl tmux wget gettext rsync the_silver_searcher)
 RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip tmux wget rsync dmenu)
 ARCH_DEPENDS=(yaourt zsh python2-autopep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux wget rsync the_silver_searcher dmenu xorg-xkill)
+MAC_MODE=false
 
 function opt_oper() {
 	# Read question and shift arguments ($2 = $1)
@@ -94,6 +95,7 @@ function check_n_install_os_deps()
 		DEPENDENCIES=(${ARCH_DEPENDS[@]})
 		QCMD="pacman -Qq | grep \"\$i\" || pacman -Qqg | grep \"\$i\""
 	elif which brew &> /dev/null; then
+		MAC_MODE=true
 		DEPENDENCIES=(${BREW_DEPENDS[@]})
 		QCMD="brew list --versions \$i | grep \$i"
 	else
@@ -171,17 +173,25 @@ function install_xfce4_theme() {
 	popd
 }
 
-function install_powerline_fonts() {
-	pushd ~
-	wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf
-	wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
-	wget https://raw.githubusercontent.com/powerline/fonts/master/Inconsolata/Inconsolata%20for%20Powerline.otf
+if [[ ${MAC_MODE} = false ]]; then
+	function install_powerline_fonts() {
+		pushd ~
+		wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf
+		wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+		wget https://raw.githubusercontent.com/powerline/fonts/master/Inconsolata/Inconsolata%20for%20Powerline.otf
 
-	mkdir -p ~/.fonts/ && mv *.otf ~/.fonts/
-	fc-cache -vf ~/.fonts
-	mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
-	popd
-}
+		mkdir -p ~/.fonts/ && mv *.otf ~/.fonts/
+		fc-cache -vf ~/.fonts
+		mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+		popd
+	}
+else
+	function install_powerline_fonts() {
+		pushd ~
+		pip install --user powerline-status
+		popd
+	}
+fi
 
 function install_xfce_shortcuts() {
 	# TODO: backup instead of remove
@@ -227,15 +237,17 @@ opt_oper "Configure git" true config_git
 # Install powerline-fonts
 opt_oper "Install powerline fonts for local user" false install_powerline_fonts
 
-# Install terminal theme
-opt_oper "Download and install XFCE4 terminal theme" false install_xfce4_theme
+if [[ ${MAC_MODE} = false ]]; then
+	# Install terminal theme
+	opt_oper "Download and install XFCE4 terminal theme" false install_xfce4_theme
 
-# Update keyboard shortcuts
-opt_oper "Do you want to replace XFCE4 keyboard shortcuts" false install_xfce_shortcuts
+	# Update keyboard shortcuts
+	opt_oper "Do you want to replace XFCE4 keyboard shortcuts" false install_xfce_shortcuts
 
-opt_oper "Do you want to install dmenu config" false install_dmenu_config
+	opt_oper "Do you want to install dmenu config" false install_dmenu_config
 
-opt_oper "Do you want to install I3 config" false install_i3_config
+	opt_oper "Do you want to install I3 config" false install_i3_config
+fi
 
 # Change zsh to default shell (Keep last)
 opt_oper "Use ZSH as default shell" true set_default_zsh
