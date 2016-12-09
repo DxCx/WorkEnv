@@ -58,8 +58,8 @@ function install_missing_os_deps()
 	elif which pacman &> /dev/null; then
 		sudo pacman --noconfirm -Sy $PKGSTOINSTALL
 	elif which brew &> /dev/null; then
-		sudo brew tap homebrew/dupes	
-		sudo brew install $PKGSTOINSTALL
+		brew tap homebrew/dupes	
+		brew install $PKGSTOINSTALL
 		brew link --force gettext
 	# Else, if no package manager has been founded
 	else
@@ -104,8 +104,6 @@ function check_n_install_os_deps()
 
 	for i in "${DEPENDENCIES[@]}"
 	do
-		echo $QCMD
-		echo $i
 		if [[ ! `eval $QCMD` ]]; then
 			PKGSTOINSTALL=$PKGSTOINSTALL" "$i
 		fi
