@@ -186,7 +186,7 @@ function install_powerline_fonts() {
 		popd
 	else
 		pushd ~
-		mv sudo *.otf ~/Library/Fonts/
+		mv *.otf ~/Library/Fonts/
 		popd
 		rm -Rf ~/.fonts/
 	fi
