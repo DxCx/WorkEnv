@@ -95,6 +95,7 @@ function check_n_install_os_deps()
 		DEPENDENCIES=(${ARCH_DEPENDS[@]})
 		QCMD="pacman -Qq | grep \"\$i\" || pacman -Qqg | grep \"\$i\""
 	elif which brew &> /dev/null; then
+		echo "Setting MAC_MODE"
 		MAC_MODE=true
 		DEPENDENCIES=(${BREW_DEPENDS[@]})
 		QCMD="brew list --versions \$i | grep \$i"
@@ -173,6 +174,7 @@ function install_xfce4_theme() {
 	popd
 }
 
+echo ${MAC_MODE}
 if [[ ${MAC_MODE} = false ]]; then
 	function install_powerline_fonts() {
 		pushd ~

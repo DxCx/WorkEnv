@@ -19,5 +19,5 @@ rm -f ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
 fc-cache -vf ~/.fonts
 rm -Rf ${ENV_DIR_PATH}
 
-chsh ${LOGNAME} -s /bin/bash
+chsh -s /bin/bash
 exec /bin/bash
