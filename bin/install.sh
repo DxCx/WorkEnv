@@ -175,20 +175,21 @@ function install_xfce4_theme() {
 }
 
 function install_powerline_fonts() {
-	if [[ ${MAC_MODE} = false ]]; then
 		pushd ~
 		wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf
-		wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
 		wget https://raw.githubusercontent.com/powerline/fonts/master/Inconsolata/Inconsolata%20for%20Powerline.otf
 
+	if [[ ${MAC_MODE} = false ]]; then
+		wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
 		mkdir -p ~/.fonts/ && mv *.otf ~/.fonts/
 		fc-cache -vf ~/.fonts
 		mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 		popd
 	else
 		pushd ~
-		pip install --user powerline-status
+		mv sudo *.otf ~/Library/Fonts/
 		popd
+		rm -Rf ~/.fonts/
 	fi
 }
 
