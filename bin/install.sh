@@ -209,6 +209,12 @@ function install_i3_config() {
 	yaourt -S google-chrome telegram-desktop-bin nitrogen bmenu morc_menu xfce4-terminal i3-sensible-terminal lxappearance xfce4-clipman-plugin xfce4-power-manager --noconfirm
 }
 
+function install_iterm_config() {
+	# TODO: backup instead of remove
+	rm -Rf ~/Library/Preferences/com.googlecode.iterm2.plist
+	ln -s ${ENV_DIR_PATH}/terminal/iterm/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
+}
+
 function install_dmenu_config() {
 	# TODO: backup instead of remove
 	rm -Rf ~/.dmenurc
@@ -246,6 +252,8 @@ if [[ ${MAC_MODE} = false ]]; then
 	opt_oper "Do you want to install dmenu config" false install_dmenu_config
 
 	opt_oper "Do you want to install I3 config" false install_i3_config
+else
+	opt_oper "Do you want to install iterm config" false install_iterm_config
 fi
 
 # Change zsh to default shell (Keep last)
