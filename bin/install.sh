@@ -2,6 +2,7 @@
 
 NOCONFIRM=${NOCONFIRM:-0}
 DEBIAN_DEPENDS=(zsh git-core build-essential vim curl python-pip tmux wget gettext-base rsync silversearcher-ag dmenu)
+BREW_DEPENDS=(zsh git vim curl tmux wget gettext rsync the_silver_searcher)
 RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip tmux wget rsync dmenu)
 ARCH_DEPENDS=(yaourt zsh python2-autopep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux wget rsync the_silver_searcher dmenu xorg-xkill)
 
@@ -56,6 +57,9 @@ function install_missing_os_deps()
 	# ArchLinux (with pacman)
 	elif which pacman &> /dev/null; then
 		sudo pacman --noconfirm -Sy $PKGSTOINSTALL
+	elif which brew &> /dev/null; then
+		sudo brew tap homebrew/dupes	
+		sudo brew install $PKGSTOINSTALL
 	# Else, if no package manager has been founded
 	else
 		NOPKGMANAGER=true
@@ -88,6 +92,9 @@ function check_n_install_os_deps()
 	elif which pacman &> /dev/null; then
 		DEPENDENCIES=(${ARCH_DEPENDS[@]})
 		QCMD="pacman -Qq | grep \"\$i\" || pacman -Qqg | grep \"\$i\""
+	elif which brew &> /dev/null; then
+		DEPENDENCIES=(${BREW_DEPENDS[@]})
+		QCMD="brew list"
 	else
 		echo "ERROR: Couldn't find package manager"
 		opt_oper "Exit" true bail_error
