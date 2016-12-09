@@ -174,9 +174,8 @@ function install_xfce4_theme() {
 	popd
 }
 
-echo ${MAC_MODE}
-if [[ ${MAC_MODE} = false ]]; then
-	function install_powerline_fonts() {
+function install_powerline_fonts() {
+	if [[ ${MAC_MODE} = false ]]; then
 		pushd ~
 		wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf
 		wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
@@ -186,14 +185,12 @@ if [[ ${MAC_MODE} = false ]]; then
 		fc-cache -vf ~/.fonts
 		mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 		popd
-	}
-else
-	function install_powerline_fonts() {
+	else
 		pushd ~
 		pip install --user powerline-status
 		popd
-	}
-fi
+	fi
+}
 
 function install_xfce_shortcuts() {
 	# TODO: backup instead of remove
