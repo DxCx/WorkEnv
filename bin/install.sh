@@ -60,6 +60,7 @@ function install_missing_os_deps()
 	elif which brew &> /dev/null; then
 		sudo brew tap homebrew/dupes	
 		sudo brew install $PKGSTOINSTALL
+		brew link --force gettext
 	# Else, if no package manager has been founded
 	else
 		NOPKGMANAGER=true
