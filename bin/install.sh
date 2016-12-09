@@ -95,7 +95,7 @@ function check_n_install_os_deps()
 		QCMD="pacman -Qq | grep \"\$i\" || pacman -Qqg | grep \"\$i\""
 	elif which brew &> /dev/null; then
 		DEPENDENCIES=(${BREW_DEPENDS[@]})
-		QCMD="brew list"
+		QCMD="brew list --versions \$1"
 	else
 		echo "ERROR: Couldn't find package manager"
 		opt_oper "Exit" true bail_error
