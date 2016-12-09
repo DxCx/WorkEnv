@@ -23,6 +23,12 @@ antigen bundle pip
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 
+# Tell antigen that you're done.
+antigen apply
+
+# Configure autosuggestion color
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=11'
+
 # Vim is my editor
 export EDITOR="vim"
 
@@ -77,6 +83,3 @@ autoload -U zmv
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Tell antigen that you're done.
-antigen apply
