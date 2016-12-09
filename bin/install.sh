@@ -130,7 +130,7 @@ function config_git() {
 
 function set_default_zsh() {
 	if [[ -x /bin/zsh ]]; then
-		chsh ${LOGNAME} -s /bin/zsh
+		chsh -s /bin/zsh
 	else
 		echo "Zsh was not found on your system. (/bin/zsh)"
 	fi
