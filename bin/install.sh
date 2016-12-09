@@ -95,7 +95,7 @@ function check_n_install_os_deps()
 		QCMD="pacman -Qq | grep \"\$i\" || pacman -Qqg | grep \"\$i\""
 	elif which brew &> /dev/null; then
 		DEPENDENCIES=(${BREW_DEPENDS[@]})
-		QCMD="brew list --versions \$i"
+		QCMD="brew list --versions \$i | grep \$i"
 	else
 		echo "ERROR: Couldn't find package manager"
 		opt_oper "Exit" true bail_error
@@ -104,6 +104,8 @@ function check_n_install_os_deps()
 
 	for i in "${DEPENDENCIES[@]}"
 	do
+		echo $QCMD
+		echo $i
 		if [[ ! `eval $QCMD` ]]; then
 			PKGSTOINSTALL=$PKGSTOINSTALL" "$i
 		fi
