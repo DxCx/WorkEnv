@@ -212,7 +212,8 @@ function install_i3_config() {
 function install_iterm_config() {
 	# TODO: backup instead of remove
 	rm -Rf ~/Library/Preferences/com.googlecode.iterm2.plist
-	ln -s ${ENV_DIR_PATH}/terminal/iterm/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
+	ln -s ${ENV_DIR_PATH}/terminal/iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
+	defaults read com.googlecode.iterm2
 }
 
 function install_dmenu_config() {
