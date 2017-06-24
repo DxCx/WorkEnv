@@ -58,6 +58,7 @@ call dein#add('amix/open_file_under_cursor.vim.git')
 
 " File types plugins
 call dein#add('scrooloose/syntastic.git')
+call dein#add('keith/swift.vim', { 'on_ft': 'swift' })
 call dein#add('mhartington/vim-typings', { 'on_ft': 'typescript' })
 call dein#add('leafgarland/typescript-vim.git', { 'on_ft': 'typescript' })
 call dein#add('Quramy/tsuquyomi', { 'on_ft': 'typescript' })
@@ -333,6 +334,8 @@ autocmd FileType typescript setlocal tabstop=2
 " XML
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+" Swift
+autocmd FileType swift setlocal tabstop=2
 " --------------------- Keep Last -------------------------------
 " Allow overrides via ~/.vim/vimrc.local
 if filereadable(expand("~/.vim/vimrc.local"))
