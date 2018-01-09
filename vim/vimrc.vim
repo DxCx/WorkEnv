@@ -75,6 +75,7 @@ call dein#add('jparise/vim-graphql', { 'on_ft': 'graphql' })
 call dein#add('chase/vim-ansible-yaml', { 'on_ft': 'ansible' })
 call dein#add('stephpy/vim-yaml', { 'on_ft': 'yaml' })
 call dein#add('hail2u/vim-css3-syntax.git', { 'on_ft': 'css' })
+call dein#add('vim-scripts/h2cppx.git', { 'on_ft': 'cpp' })
 
 " Snippets
 call dein#add('honza/vim-snippets')
@@ -341,3 +342,6 @@ autocmd FileType swift setlocal tabstop=2
 if filereadable(expand("~/.vim/vimrc.local"))
     source ~/.vim/vimrc.local
 endif
+
+" Cpp2Header
+let g:h2cppx_python_path="python2"
