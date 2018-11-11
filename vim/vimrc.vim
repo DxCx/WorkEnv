@@ -76,6 +76,7 @@ call dein#add('chase/vim-ansible-yaml', { 'on_ft': 'ansible' })
 call dein#add('stephpy/vim-yaml', { 'on_ft': 'yaml' })
 call dein#add('hail2u/vim-css3-syntax.git', { 'on_ft': 'css' })
 call dein#add('vim-scripts/h2cppx.git', { 'on_ft': 'cpp' })
+call dein#add('vivien/vim-linux-coding-style', { 'on_fp': 'cpp' })
 
 " Snippets
 call dein#add('honza/vim-snippets')
