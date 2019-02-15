@@ -128,6 +128,8 @@ function config_git() {
 	git config --global branch.autosetuprebase always
 	git config --global log.decorate true
 	git config --global log.date relative
+	git config --global alias.l 'log --pretty=format:"%C(auto,yellow)%h %C(auto,green)%<(10,trunc)%aN %C(auto,reset)%<(80,trunc)%s %C(auto,blue)[%>(12)%ad]%C(auto,red)%d" --graph --'
+	git config --add rebase.instructionFormat "(%an <%ae>) %s"
 }
 
 function set_default_zsh() {
