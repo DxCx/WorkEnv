@@ -1,10 +1,10 @@
 #!/bin/bash
 
 NOCONFIRM=${NOCONFIRM:-0}
-DEBIAN_DEPENDS=(zsh git-core build-essential vim curl python-pip tmux wget gettext-base rsync silversearcher-ag dmenu)
-BREW_DEPENDS=(zsh git vim curl tmux wget gettext rsync the_silver_searcher)
-RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip tmux wget rsync dmenu)
-ARCH_DEPENDS=(yaourt zsh python2-autopep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux wget rsync the_silver_searcher dmenu xorg-xkill)
+DEBIAN_DEPENDS=(zsh git-core build-essential vim curl python-pip tmux wget gettext-base rsync silversearcher-ag dmenu neovim)
+BREW_DEPENDS=(zsh git vim curl tmux wget gettext rsync the_silver_searcher neovim)
+RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip tmux wget rsync dmenu neovim)
+ARCH_DEPENDS=(yaourt zsh python2-autopep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux wget rsync the_silver_searcher dmenu xorg-xkill neovim)
 MAC_MODE=false
 
 function opt_oper() {
@@ -149,6 +149,9 @@ function load_enviroment() {
 
 	# Build config for vim
 	echo source `pwd`/vim/vimrc.vim > ~/.vimrc
+
+	mkdir -p ~/.config/nvim/
+	echo source `pwd`/nvim/init.vim > ~/.config/nvim/init.vim
 
 	# Build config for tmux
 	echo source-file \${ENV_DIR_PATH}/tmux/tmux.conf > ~/.tmux.conf
