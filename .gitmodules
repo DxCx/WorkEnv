@@ -9,3 +9,6 @@
 [submodule "terminal/antigen"]
 	path = terminal/antigen
 	url = https://github.com/zsh-users/antigen.git
+[submodule "nvim/plug"]
+	path = nvim/plug
+	url = https://github.com/junegunn/vim-plug.git

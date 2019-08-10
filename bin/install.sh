@@ -119,6 +119,7 @@ function check_n_install_os_deps()
 function install_plugins() {
 	${ENV_DIR_PATH}/tmux/tpm/bin/install_plugins
 	vim "+call dein#install()" +qall
+	nvim +PlugInstall +UpdateRemotePlugins +qall
 }
 
 function config_git() {
