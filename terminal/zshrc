@@ -31,6 +31,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=11'
 
 # Vim is my editor
 export EDITOR="vim"
+alias vim="nvim"
 
 alias tmux="tmux -2"
 
