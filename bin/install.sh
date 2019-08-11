@@ -123,8 +123,9 @@ function install_plugins() {
 }
 
 function config_git() {
-	git config --global core.editor "vim"
+	git config --global core.editor "nvim"
 	git config --global merge.tool "vimdiff"
+	git config --global mergetool.vimdiff.path "nvim"
 	git config --global color.ui auto
 	git config --global branch.autosetuprebase always
 	git config --global log.decorate true
