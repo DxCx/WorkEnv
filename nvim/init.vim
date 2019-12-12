@@ -148,7 +148,7 @@ autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
 " File types
-let g:LanguageClient_cppServer = ['clangd', '-background-index']
+let g:LanguageClient_cppServer = ['clangd', '-background-index', '-header-insertion=never']
 function ReconfigureLangugeClient()
 	let g:LanguageClient_serverCommands = {
 				\ 'cpp': g:LanguageClient_cppServer,
