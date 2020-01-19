@@ -15,6 +15,7 @@ if [ ! -d "${ENV_DIR_PATH}" ]; then
 fi
 
 echo "Uninstalling... (${ENV_DIR_PATH})"
+rm -f ~/.config/nvim/init.vim
 rm -f ~/.vimrc
 rm -f ~/.tmux.conf
 rm -f ~/.zshrc
@@ -22,7 +23,7 @@ if [[ ${MAC_MODE} = false ]]; then
 	rm -f ~/.i3
 	rm -f ~/.config/xfce4/terminal/terminalrc
 	rm -f ~/.fonts/PowerlineSymbols.otf
-	rm -f ~/.config/fontconfig/conf.d/10-powerline-symbols.conf 
+	rm -f ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
 	fc-cache -vf ~/.fonts
 else
     rm -f ~/Library/Preferences/com.googlecode.iterm2.plist
