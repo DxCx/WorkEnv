@@ -1,10 +1,10 @@
 #!/bin/bash
 
 NOCONFIRM=${NOCONFIRM:-0}
-DEBIAN_DEPENDS=(zsh git-core build-essential vim curl python-pip tmux wget gettext-base rsync silversearcher-ag dmenu neovim)
-BREW_DEPENDS=(zsh git vim curl tmux wget gettext rsync the_silver_searcher neovim)
-RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ vim-full curl python-pip xclip tmux wget rsync dmenu neovim)
-ARCH_DEPENDS=(yaourt zsh python2-autopep8 python2-pylint ipython2 gvim curl python2-pip base-devel git xclip tmux wget rsync the_silver_searcher dmenu xorg-xkill neovim)
+DEBIAN_DEPENDS=(zsh git-core build-essential curl python-pip tmux wget gettext-base rsync silversearcher-ag dmenu neovim)
+BREW_DEPENDS=(zsh git curl tmux wget gettext rsync the_silver_searcher neovim)
+RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ curl python-pip xclip tmux wget rsync dmenu neovim)
+ARCH_DEPENDS=(yaourt zsh python2-autopep8 python2-pylint ipython2 curl python2-pip base-devel git xclip tmux wget rsync the_silver_searcher dmenu xorg-xkill neovim)
 MAC_MODE=false
 
 function opt_oper() {
@@ -118,7 +118,6 @@ function check_n_install_os_deps()
 
 function install_plugins() {
 	${ENV_DIR_PATH}/tmux/tpm/bin/install_plugins
-	vim "+call dein#install()" +qall
 	nvim +PlugInstall +UpdateRemotePlugins +qall
 }
 
@@ -149,9 +148,7 @@ function load_enviroment() {
 	git clone --recursive https://github.com/DxCx/WorkEnv .dxcx_workenv
 	cd .dxcx_workenv
 
-	# Build config for vim
-	echo source `pwd`/vim/vimrc.vim > ~/.vimrc
-
+	# Build config for neovim
 	mkdir -p ~/.config/nvim/
 	echo source `pwd`/nvim/init.vim > ~/.config/nvim/init.vim
 
@@ -165,9 +162,6 @@ function load_enviroment() {
 	source ~/.zshrc
 	# Enable zshrc config loading
 	echo source \${ENV_DIR_PATH}/terminal/zshrc >> ~/.zshrc
-
-	# Download Dein for vim plugin managment
-	git clone https://github.com/Shougo/dein.vim vim/dein/repos/github.com/Shougo/dein.vim
 }
 
 function install_xfce4_theme() {
