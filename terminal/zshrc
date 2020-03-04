@@ -4,9 +4,6 @@ source ${ENV_DIR_PATH}/terminal/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
-# Themes
-antigen theme agnoster
-
 # Plugins
 antigen bundle git
 
@@ -22,6 +19,9 @@ antigen bundle docker
 antigen bundle pip
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
+
+# Theme
+antigen theme romkatv/powerlevel10k
 
 # Tell antigen that you're done.
 antigen apply
