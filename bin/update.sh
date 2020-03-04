@@ -1,6 +1,8 @@
 #!/bin/bash
 cd ${ENV_DIR_PATH}
 git pull --rebase
+antigen reset
+antigen update
 ${ENV_DIR_PATH}/tmux/tpm/bin/update_plugins all
 
 nvim "+PlugUpgrade" +qall
