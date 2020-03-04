@@ -4,7 +4,7 @@ NOCONFIRM=${NOCONFIRM:-0}
 DEBIAN_DEPENDS=(zsh git-core build-essential curl python-pip tmux wget gettext-base rsync silversearcher-ag dmenu neovim)
 BREW_DEPENDS=(zsh git curl tmux wget gettext rsync the_silver_searcher neovim)
 RH_DEPENDS=(zsh git-all make automake gcc gcc-c++ curl python-pip xclip tmux wget rsync dmenu neovim)
-ARCH_DEPENDS=(yaourt zsh python2-autopep8 python2-pylint ipython2 curl python2-pip base-devel git xclip tmux wget rsync the_silver_searcher dmenu xorg-xkill neovim)
+ARCH_DEPENDS=(yaourt zsh python2-autopep8 python2-pylint ipython2 curl python2-pip base-devel git xclip tmux wget rsync the_silver_searcher dmenu xorg-xkill neovim nerd-fonts-complete)
 MAC_MODE=false
 
 function opt_oper() {
