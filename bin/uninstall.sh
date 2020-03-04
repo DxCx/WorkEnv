@@ -16,7 +16,6 @@ fi
 
 echo "Uninstalling... (${ENV_DIR_PATH})"
 rm -f ~/.config/nvim/init.vim
-rm -f ~/.vimrc
 rm -f ~/.tmux.conf
 rm -f ~/.zshrc
 if [[ ${MAC_MODE} = false ]]; then

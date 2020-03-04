@@ -262,5 +262,5 @@ fi
 opt_oper "Use ZSH as default shell" true set_default_zsh
 
 if [[ ${MAC_MODE} = true ]]; then
-	echo 'please make sure vim supports lua (vim --version | grep +lua) if not, use brew install vim --with-lua'
+	echo 'please make sure neovim supports lua (nvim --version | grep +lua) if not, use brew install neovim --with-lua'
 fi

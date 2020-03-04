@@ -30,7 +30,7 @@ antigen apply
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=11'
 
 # Vim is my editor
-export EDITOR="vim"
+export EDITOR="nvim"
 alias vim="nvim"
 
 alias tmux="tmux -2"
