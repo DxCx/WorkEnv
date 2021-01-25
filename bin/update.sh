@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 cd ${ENV_DIR_PATH}
 git pull --rebase
 antigen reset
