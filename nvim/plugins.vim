@@ -44,6 +44,9 @@ Plug 'vim-scripts/vimprj'
 " AutoFromat
 Plug 'rhysd/vim-clang-format'
 
+" Lsp signature
+Plug 'ray-x/lsp_signature.nvim'
+
 " AutoCompletion
 " For async completion
 "Plug 'Shougo/deoplete.nvim'
