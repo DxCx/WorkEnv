@@ -44,6 +44,9 @@ Plug 'vim-scripts/vimprj'
 " AutoFromat
 Plug 'rhysd/vim-clang-format'
 
+" Lsp signature
+Plug 'ray-x/lsp_signature.nvim'
+
 " AutoCompletion
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
