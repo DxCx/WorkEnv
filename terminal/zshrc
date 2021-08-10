@@ -38,6 +38,9 @@ alias tmux="tmux -2"
 # Load functions:
 autoload -U zmv
 
+# Load bashcompint for argcomplete
+autoload -U bashcompinit
+
 #### Extra settings.
 
 # Uncomment the following line to use case-sensitive completion.
