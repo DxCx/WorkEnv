@@ -45,20 +45,8 @@ Plug 'vim-scripts/vimprj'
 Plug 'rhysd/vim-clang-format'
 
 " AutoCompletion
-" For async completion
-"Plug 'Shougo/deoplete.nvim'
-" For Denite features
-"Plug 'Shougo/denite.nvim'
-
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-github'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 
 " Multi-entry selection UI. (Ctrl+p)
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

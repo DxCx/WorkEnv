@@ -123,46 +123,109 @@ noremap <F8> :call Hexmode()<CR>
 " Ctrl+P to fzf
 nnoremap <C-p> :GFiles<Cr>
 
-" NCM (nvim-complete-manager)
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
+" " NCM (nvim-complete-manager)
+" " enable ncm2 for all buffers
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+"
+" " IMPORTANT: :help Ncm2PopupOpen for more information
+" set completeopt=noinsert,menuone,noselect
+"
+" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+"
+" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+"
+" " NCM (nvim-complete-manager)
+" " enable ncm2 for all buffers
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+"
+" " IMPORTANT: :help Ncm2PopupOpen for more information
+" set completeopt=noinsert,menuone,noselect
+"
+" " File types
+" let g:LanguageClient_cppServer = ['clangd', '-background-index', '-header-insertion=never']
+" function ReconfigureLangugeClient()
+" 	let g:LanguageClient_serverCommands = {
+" 				\ 'cpp': g:LanguageClient_cppServer,
+" 				\ 'c': g:LanguageClient_cppServer,
+" 				\ 'python': ['/usr/local/bin/pyls'],
+" 				\ }
+"
+" 	try
+" 		execute 'LanguageClientStop'
+" 		execute 'LanguageClientStart'
+" 	catch
+" 	endtry
+" endfunction
+" call ReconfigureLangugeClient()
 
-" IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
+" nvim-lspconfig + Auto Complete
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
 
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+lua << EOF
+local lspconfig = require'lspconfig'
+-- nvim-compe setup
+require'compe'.setup {
+    enabled = true;
+    autocomplete = true;
+    debug = false;
+    min_length = 1;
+    preselect = 'enable';
+    throttle_time = 80;
+    source_timeout = 200;
+    incomplete_delay = 400;
+    max_abbr_width = 100;
+    max_kind_width = 100;
+    max_menu_width = 100;
+    documentation = true;
+    source = {
+        path = true;
+        buffer = true;
+        calc = true;
+        nvim_lsp = true;
+        nvim_lua = true;
+        treesitter = true;
+        spell = true;
+        tags = true;
+        ultisnips = true,
+        vsnip = false;
+        snippets_nvim = false;
+    };
+}
+-- python language server settings (Disabled for now, need pyls)
+-- lspconfig.pyls.setup{}
+-- cpp language server settings
+lspconfig.clangd.setup{
+    cmd = {'clangd', '-background-index', '-header-insertion=never'},
+}
+-- disable all lsp diagnostic virtual text to reduce noise
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = false,
+        signs = true,
+    }
+)
+EOF
 
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+" nvim-lsp mappings
+" note: <C-o> go back previous pos, <C-i> forward to last pos
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <c-s> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 
-" NCM (nvim-complete-manager)
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-
-" File types
-let g:LanguageClient_cppServer = ['clangd', '-background-index', '-header-insertion=never']
-function ReconfigureLangugeClient()
-	let g:LanguageClient_serverCommands = {
-				\ 'cpp': g:LanguageClient_cppServer,
-				\ 'c': g:LanguageClient_cppServer,
-				\ 'python': ['/usr/local/bin/pyls'],
-				\ }
-
-	try
-		execute 'LanguageClientStop'
-		execute 'LanguageClientStart'
-	catch
-	endtry
-endfunction
-call ReconfigureLangugeClient()
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gI    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> gT   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
 " ################ Clang format #####################
 
