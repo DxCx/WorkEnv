@@ -221,6 +221,26 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
+  refactor = {
+    highlight_definitions = { enable = true },
+    highlight_current_scope = { enable = false },
+    smart_rename = {
+      enable = true,
+      keymaps = {
+        smart_rename = "grr",
+      },
+    },
+    navigation = {
+  	  enable = true,
+  	  keymaps = {
+  		  goto_definition_lsp_fallback = "gd",
+  		  list_definitions = "gnd",
+  		  list_definitions_toc = "gO",
+  		  goto_next_usage = "<a-*>",
+  		  goto_previous_usage = "<a-#>",
+  	  },
+    },
+  },
   playground = {
     enable = true,
     disable = {},
@@ -244,7 +264,6 @@ EOF
 
 " nvim-lsp mappings
 " note: <C-o> go back previous pos, <C-i> forward to last pos
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <c-s> <cmd>lua vim.lsp.buf.signature_help()<CR>

@@ -50,8 +50,11 @@ Plug 'ray-x/lsp_signature.nvim'
 " AutoCompletion
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
+
+" Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
 " Multi-entry selection UI. (Ctrl+p)
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
