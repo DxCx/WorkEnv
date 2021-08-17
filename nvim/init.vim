@@ -223,6 +223,7 @@ EOF
 
 " nvim-lsp mappings
 " note: <C-o> go back previous pos, <C-i> forward to last pos
+nnoremap <silent> gh 	<Esc>:ClangdSwitchSourceHeader<CR>
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <c-s> <cmd>lua vim.lsp.buf.signature_help()<CR>
