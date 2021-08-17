@@ -193,9 +193,9 @@ require'compe'.setup {
         treesitter = true;
         spell = true;
         tags = true;
-        ultisnips = true,
-        vsnip = false;
-        snippets_nvim = false;
+--        ultisnips = true,
+--        vsnip = false;
+--        snippets_nvim = false;
     };
 }
 -- python language server settings (Disabled for now, need pyls)
