@@ -9,10 +9,10 @@ set updatetime=10
 " Color Scheme Solarized Dark
 set termguicolors
 try
-colorscheme NeoSolarized
+colorscheme solarized-high
 set background=dark
 catch /^Vim\%((\a\+)\)\=:E185/
-	silent !echo "NeoSolorized theme is not installed yet"
+	silent !echo "solorized-high theme is not installed yet"
 endtry
 
 " Mouse Cursor

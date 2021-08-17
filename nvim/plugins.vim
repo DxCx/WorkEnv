@@ -17,7 +17,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Solarized theme
-Plug 'iCyMind/NeoSolarized'
+Plug 'ishan9299/nvim-solarized-lua'
 
 " HexMode
 Plug 'fidian/hexmode'
