@@ -202,7 +202,7 @@ require'compe'.setup {
 -- lspconfig.pyls.setup{}
 -- cpp language server settings
 lspconfig.clangd.setup{
-    cmd = {'clangd', '-background-index', '-header-insertion=never'},
+    cmd = {'clangd', '--background-index', '--header-insertion=never'},
 }
 -- disable all lsp diagnostic virtual text to reduce noise
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
