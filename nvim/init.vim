@@ -123,47 +123,6 @@ noremap <F8> :call Hexmode()<CR>
 " Ctrl+P to fzf
 nnoremap <C-p> :GFiles<Cr>
 
-" " NCM (nvim-complete-manager)
-" " enable ncm2 for all buffers
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-"
-" " IMPORTANT: :help Ncm2PopupOpen for more information
-" set completeopt=noinsert,menuone,noselect
-"
-" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-"
-" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-"
-" " NCM (nvim-complete-manager)
-" " enable ncm2 for all buffers
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-"
-" " IMPORTANT: :help Ncm2PopupOpen for more information
-" set completeopt=noinsert,menuone,noselect
-"
-" " File types
-" let g:LanguageClient_cppServer = ['clangd', '-background-index', '-header-insertion=never']
-" function ReconfigureLangugeClient()
-" 	let g:LanguageClient_serverCommands = {
-" 				\ 'cpp': g:LanguageClient_cppServer,
-" 				\ 'c': g:LanguageClient_cppServer,
-" 				\ 'python': ['/usr/local/bin/pyls'],
-" 				\ }
-"
-" 	try
-" 		execute 'LanguageClientStop'
-" 		execute 'LanguageClientStart'
-" 	catch
-" 	endtry
-" endfunction
-" call ReconfigureLangugeClient()
-
 " nvim-lspconfig + Auto Complete
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
