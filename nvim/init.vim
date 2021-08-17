@@ -213,6 +213,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 EOF
 
+" Treesitter configuration
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+
 " nvim-lsp mappings
 " note: <C-o> go back previous pos, <C-i> forward to last pos
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
