@@ -157,8 +157,9 @@ require'compe'.setup {
 --        snippets_nvim = false;
     };
 }
--- python language server settings (Disabled for now, need pyls)
--- lspconfig.pyls.setup{}
+-- python language server settings (sudo pip3 install python-lsp-server[all])
+lspconfig.pylsp.setup{}
+
 -- cpp language server settings
 lspconfig.clangd.setup{
     cmd = {'clangd', '--background-index', '--header-insertion=never'},
