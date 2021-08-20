@@ -66,7 +66,6 @@ Plug 'vivien/vim-linux-coding-style', { 'for': ['cpp', 'c'] }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp', 'c'] }
 " A - for switching between source and header files
 Plug 'vim-scripts/a.vim', { 'for': ['cpp', 'c'] }
-Plug 'mhartington/nvim-typescript', {'for': 'typescript', 'do': './install.sh'}
 Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 " CMake Support
 Plug 'vhdirk/vim-cmake'
