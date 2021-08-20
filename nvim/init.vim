@@ -171,9 +171,10 @@ lspconfig.vimls.setup{}
 lspconfig.tsserver.setup{}
 
 -- cpp language server settings
-lspconfig.clangd.setup{
-    cmd = {'clangd', '--background-index', '--header-insertion=never'},
-}
+lspconfig.ccls.setup{}
+-- lspconfig.clangd.setup{
+--     cmd = {'clangd', '--background-index', '--header-insertion=never'},
+-- }
 -- disable all lsp diagnostic virtual text to reduce noise
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
