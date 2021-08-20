@@ -164,6 +164,12 @@ require'compe'.setup {
 -- python language server settings (sudo pip3 install python-lsp-server[all])
 lspconfig.pylsp.setup{}
 
+-- vim ls
+lspconfig.vimls.setup{}
+
+-- typescript ls
+lspconfig.tsserver.setup{}
+
 -- cpp language server settings
 lspconfig.clangd.setup{
     cmd = {'clangd', '--background-index', '--header-insertion=never'},
