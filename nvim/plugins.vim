@@ -16,8 +16,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Solarized theme
-Plug 'ishan9299/nvim-solarized-lua'
+" OceanicNext theme
+Plug 'mhartington/oceanic-next'
 
 " HexMode
 Plug 'fidian/hexmode'

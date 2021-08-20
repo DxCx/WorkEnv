@@ -8,11 +8,15 @@ set updatetime=10
 " Themes/Visual
 " Color Scheme Solarized Dark
 set termguicolors
+if (has("termguicolors"))
+  set termguicolors
+endif
 try
-colorscheme solarized-low
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+colorscheme OceanicNext
 set background=dark
 catch /^Vim\%((\a\+)\)\=:E185/
-	silent !echo "solorized-low theme is not installed yet"
+	silent !echo "OceanicNext theme is not installed yet"
 endtry
 
 " Mouse Cursor
@@ -24,7 +28,7 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 set laststatus=2
 set t_Co=256 " 256 Colors!
 let g:airline_powerline_fonts=1
-let g:airline_theme='murmur'
+let g:airline_theme='oceanicnext'
 let g:airline_section_x=""
 let g:airline_section_y="%{strlen(&ft)?&ft:'none'}:%{&ff}"
 let g:airline_right_sep=''
