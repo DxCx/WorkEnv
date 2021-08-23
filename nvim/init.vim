@@ -124,8 +124,37 @@ map <silent> - :set relativenumber!<CR>
 " Mapping F8 to change to Hex View
 noremap <F8> :call Hexmode()<CR>
 
+" Telescope Config
+lua << EOF
+require('telescope').setup {
+  pickers = {
+    -- Your special builtin config goes in here
+    buffers = {
+      sort_lastused = true,
+      theme = "dropdown",
+      previewer = true,
+    },
+    git_files = {
+    	show_untracked = false,
+    }
+  },
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = false, -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
+  }
+}
+-- To get fzf loaded and working with telescope, you need to call
+-- load_extension, somewhere after setup function:
+require('telescope').load_extension('fzf')
+EOF
+
 " Ctrl+P to fzf
-nnoremap <C-p> :GFiles<Cr>
+nnoremap <C-p> :Telescope git_files<Cr>
 
 " nvim-lspconfig + Auto Complete
 set completeopt=menuone,noinsert,noselect
