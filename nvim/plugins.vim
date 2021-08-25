@@ -47,14 +47,16 @@ Plug 'rhysd/vim-clang-format'
 " Lsp signature
 Plug 'ray-x/lsp_signature.nvim'
 
-" AutoCompletion
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
-
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
+
+" AutoCompletion
+Plug 'neovim/nvim-lspconfig'
+Plug 'haorenW1025/completion-nvim'
+Plug 'nvim-treesitter/completion-treesitter'
+Plug 'steelsojka/completion-buffers'
 
 " Multi-entry selection UI. (Ctrl+p)
 Plug 'nvim-lua/plenary.nvim'

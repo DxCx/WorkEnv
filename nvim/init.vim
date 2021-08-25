@@ -160,36 +160,36 @@ nnoremap <C-p> :Telescope git_files<Cr>
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
+" Configure the completion chains
+let g:completion_chain_complete_list = {
+			\'default' : {
+			\	'default' : [
+			\		{'complete_items' : ['lsp', 'buffer']},
+			\ 		{'complete_items': ['path'], 'triggered_only': ['/']},
+			\		{'mode' : 'file'}
+			\	],
+			\	'comment' : [],
+			\	'string' : []
+			\	},
+			\'c' : [
+			\	{'complete_items': ['ts', 'lsp', 'buffer']}
+			\	],
+			\'cpp' : [
+			\	{'complete_items': ['ts', 'lsp', 'buffer']}
+			\	],
+			\'python' : [
+			\	{'complete_items': ['ts', 'lsp', 'buffer']}
+			\	],
+			\'lua' : [
+			\	{'complete_items': ['ts', 'lsp', 'buffer']}
+			\	],
+			\}
+
+" Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
+
 lua << EOF
 local lspconfig = require'lspconfig'
--- nvim-compe setup
-require'compe'.setup {
-    enabled = true;
-    autocomplete = true;
-    debug = false;
-    min_length = 1;
-    preselect = 'enable';
-    throttle_time = 80;
-    source_timeout = 200;
-    incomplete_delay = 400;
-    max_abbr_width = 100;
-    max_kind_width = 100;
-    max_menu_width = 100;
-    documentation = true;
-    source = {
-        path = true;
-        buffer = true;
-        calc = true;
-        nvim_lsp = true;
-        nvim_lua = true;
-        treesitter = true;
-        spell = true;
-        tags = true;
---        ultisnips = true,
---        vsnip = false;
---        snippets_nvim = false;
-    };
-}
 -- python language server settings (sudo pip3 install python-lsp-server[all])
 lspconfig.pylsp.setup{}
 
