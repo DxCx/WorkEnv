@@ -10,3 +10,5 @@ nvim "+PlugClean" +qall
 nvim "+PlugInstall" +qall
 nvim "+PlugUpdate" +qall
 nvim "+UpdateRemotePlugins" +qall
+# Treesitter update
+nvim "+TSUpdate" +qall
