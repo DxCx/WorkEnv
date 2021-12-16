@@ -44,9 +44,6 @@ Plug 'vim-scripts/vimprj'
 " AutoFromat
 Plug 'rhysd/vim-clang-format'
 
-" Lsp signature
-Plug 'ray-x/lsp_signature.nvim'
-
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
@@ -54,9 +51,20 @@ Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
 " AutoCompletion
 Plug 'neovim/nvim-lspconfig'
-Plug 'haorenW1025/completion-nvim'
-Plug 'nvim-treesitter/completion-treesitter'
-Plug 'steelsojka/completion-buffers'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'ray-x/cmp-treesitter'
+Plug 'hrsh7th/nvim-cmp'
+" AutoCompletion snippets (change config if moving to other)
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'rafamadriz/friendly-snippets'
+
+" Lsp signature
+Plug 'ray-x/lsp_signature.nvim'
 
 " Multi-entry selection UI. (Ctrl+p)
 Plug 'nvim-lua/plenary.nvim'

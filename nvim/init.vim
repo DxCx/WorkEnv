@@ -157,53 +157,96 @@ EOF
 nnoremap <C-p> :Telescope git_files<Cr>
 
 " nvim-lspconfig + Auto Complete
-set completeopt=menuone,noinsert,noselect
-set shortmess+=c
+set completeopt=menu,menuone,noselect
 
-" Configure the completion chains
-let g:completion_chain_complete_list = {
-			\'default' : {
-			\	'default' : [
-			\		{'complete_items' : ['lsp', 'buffer']},
-			\ 		{'complete_items': ['path'], 'triggered_only': ['/']},
-			\		{'mode' : 'file'}
-			\	],
-			\	'comment' : [],
-			\	'string' : []
-			\	},
-			\'c' : [
-			\	{'complete_items': ['ts', 'lsp', 'buffer']}
-			\	],
-			\'cpp' : [
-			\	{'complete_items': ['ts', 'lsp', 'buffer']}
-			\	],
-			\'python' : [
-			\	{'complete_items': ['ts', 'lsp', 'buffer']}
-			\	],
-			\'lua' : [
-			\	{'complete_items': ['ts', 'lsp', 'buffer']}
-			\	],
-			\}
+lua <<EOF
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
 
-" Use completion-nvim in every buffer
-autocmd BufEnter * lua require'completion'.on_attach()
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+      end,
+    },
+    mapping = {
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      -- Accept currently selected item. If none selected, `select` first item.
+      -- Set `select` to `false` to only confirm explicitly selected items.
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = cmp.config.sources({
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+      { name = 'vsnip' }, -- For vsnip users.
+      { name = 'nvim_lsp' },
+	  { name = 'treesitter' },
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  -- Setup lspconfig.
+  local lspconf_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  lspconf_capabilities.textDocument.completion.completionItem.snippetSupport = true
+  lspconf_capabilities.textDocument.completion.completionItem.resolveSupport = {
+	  properties = { "documentation", "detail", "additionalTextEdits" },
+  }
+EOF
 
 lua << EOF
 local lspconfig = require'lspconfig'
 -- python language server settings (sudo pip3 install python-lsp-server[all])
-lspconfig.pylsp.setup{}
+lspconfig.pylsp.setup{
+    capabilities = lspconf_capabilities,
+}
 
 -- vim ls
-lspconfig.vimls.setup{}
+lspconfig.vimls.setup{
+    capabilities = lspconf_capabilities,
+}
 
 -- typescript ls
-lspconfig.tsserver.setup{}
+lspconfig.tsserver.setup{
+    capabilities = lspconf_capabilities,
+}
 
 -- cpp language server settings
-lspconfig.ccls.setup{}
--- lspconfig.clangd.setup{
---     cmd = {'clangd', '--background-index', '--header-insertion=never'},
--- }
+--lspconfig.ccls.setup{
+--    capabilities = lspconf_capabilities,
+--}
+lspconfig.clangd.setup{
+    cmd = {'clangd', '--background-index', '--header-insertion=never'},
+    capabilities = lspconf_capabilities,
+}
+
 -- disable all lsp diagnostic virtual text to reduce noise
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
