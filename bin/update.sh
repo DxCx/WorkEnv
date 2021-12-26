@@ -1,4 +1,6 @@
 #!/bin/zsh
+source ${ENV_DIR_PATH}/terminal/antigen/antigen.zsh
+
 cd ${ENV_DIR_PATH}
 git pull --rebase
 antigen reset
