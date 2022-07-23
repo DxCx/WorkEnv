@@ -33,7 +33,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=11'
 export EDITOR="nvim"
 alias vim="nvim"
 
-alias tmux="tmux -2"
+alias tmux="tmux -u -2"
 
 # Load functions:
 autoload -U zmv
