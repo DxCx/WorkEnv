@@ -73,7 +73,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " FileTypes
 Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
-Plug 'vivien/vim-linux-coding-style', { 'for': ['cpp', 'c'] }
+"Plug 'vivien/vim-linux-coding-style', { 'for': ['cpp', 'c'] }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp', 'c'] }
 " A - for switching between source and header files
 Plug 'vim-scripts/a.vim', { 'for': ['cpp', 'c'] }

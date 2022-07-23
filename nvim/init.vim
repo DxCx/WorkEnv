@@ -243,8 +243,14 @@ lspconfig.tsserver.setup{
 --    capabilities = lspconf_capabilities,
 --}
 lspconfig.clangd.setup{
-    cmd = {'clangd', '--background-index', '--header-insertion=never'},
+    cmd = {'clangd', '--background-index', '--header-insertion=iwyu', "--clang-tidy", "--cross-file-rename", "--completion-style=bundled"},
     capabilities = lspconf_capabilities,
+    init_options = {
+    clangdFileStatus = true, -- Provides information about activity on clangd’s per-file worker thread
+    usePlaceholders = true,
+    completeUnimported = true,
+    semanticHighlighting = true,
+  },
 }
 
 -- disable all lsp diagnostic virtual text to reduce noise
@@ -259,7 +265,7 @@ EOF
 " Treesitter configuration
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
