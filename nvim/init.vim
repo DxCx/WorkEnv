@@ -214,7 +214,7 @@ lua <<EOF
   })
 
   -- Setup lspconfig.
-  local lspconf_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local lspconf_capabilities = require('cmp_nvim_lsp').default_capabilities()
   lspconf_capabilities.textDocument.completion.completionItem.snippetSupport = true
   lspconf_capabilities.textDocument.completion.completionItem.resolveSupport = {
 	  properties = { "documentation", "detail", "additionalTextEdits" },
