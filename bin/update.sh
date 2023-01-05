@@ -13,7 +13,7 @@ nvim "+PlugInstall" +qall
 nvim "+PlugUpdate" +qall
 nvim "+UpdateRemotePlugins" +qall
 # Treesitter update
-nvim "+TSUpdateSync" +qall
+nvim "+TSUpdate" +qall
 
 # Make sure everything is in place
 nvim "+checkhealth"
