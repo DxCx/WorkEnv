@@ -1,0 +1,4 @@
+#!/bin/zsh
+alias nvim='${ENV_DIR_PATH}/appimages/nvim'
+alias vim='nvim'
+alias tmux='tmux -u -2'

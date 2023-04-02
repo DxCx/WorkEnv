@@ -1,5 +1,6 @@
 #!/bin/zsh
 source ${ENV_DIR_PATH}/terminal/antigen/antigen.zsh
+source ${ENV_DIR_PATH}/terminal/aliases
 
 cd ${ENV_DIR_PATH}
 

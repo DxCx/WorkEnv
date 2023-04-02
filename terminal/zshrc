@@ -30,11 +30,8 @@ antigen apply
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=11'
 
 # Vim is my editor
-alias nvim="${ENV_DIR_PATH}/appimages/nvim"
-alias vim="nvim"
+source ${ENV_DIR_PATH}/terminal/aliases
 export EDITOR="nvim"
-
-alias tmux="tmux -u -2"
 
 # Load functions:
 autoload -U zmv
