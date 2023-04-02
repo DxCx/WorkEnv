@@ -2,6 +2,11 @@
 source ${ENV_DIR_PATH}/terminal/antigen/antigen.zsh
 
 cd ${ENV_DIR_PATH}
+
+pushd appimages
+./update.sh
+popd
+
 git pull --rebase
 antigen reset
 antigen update
