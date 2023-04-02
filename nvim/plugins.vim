@@ -49,6 +49,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
+Plug 'folke/twilight.nvim'
 
 " AutoCompletion
 Plug 'neovim/nvim-lspconfig'

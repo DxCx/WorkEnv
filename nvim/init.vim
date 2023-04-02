@@ -329,6 +329,12 @@ require'treesitter-context'.setup {
 }
 EOF
 
+lua << EOF
+require("twilight").setup {
+-- your configuration comes here or leave it empty to use the default settings
+}
+EOF
+
 " nvim-lsp mappings
 " note: <C-o> go back previous pos, <C-i> forward to last pos
 nnoremap <silent> gh 	<Esc>:ClangdSwitchSourceHeader<CR>
